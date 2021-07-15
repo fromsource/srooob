@@ -12,34 +12,9 @@ jobs:
     - name: Install GNTL Dependencies
       run: HOMEBREW_NO_AUTO_UPDATE=1 brew install autoconf autogen automake binutils coreutils libsodium openssl pkg-config boost hidapi ldns expat libunwind-headers readline
     - name: Build
-      run: make release-static-mac-x86_64 -j2
+      run: make release -j2
     - name: Upload macOS Artifacts
       uses: actions/upload-artifact@master
       with:
         name: macOS
-        path: 'build/**/**/gntl*'
-
-  build-ubuntu:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-      with:
-        submodules: recursive
-    - name: remove bundled boost
-      run: sudo rm -rf /usr/local/share/boost
-    - name: set apt conf
-      run: |
-        echo "Acquire::Retries \"3\";" | sudo tee -a /etc/apt/apt.conf.d/80-custom
-        echo "Acquire::http::Timeout \"120\";" | sudo tee -a /etc/apt/apt.conf.d/80-custom
-        echo "Acquire::ftp::Timeout \"120\";" | sudo tee -a /etc/apt/apt.conf.d/80-custom
-    - name: update apt
-      run: sudo apt update
-    - name: Install GNTL Dependencies
-      run: sudo apt -y install build-essential cmake libboost-all-dev graphviz doxygen libunwind8-dev pkg-config libssl-dev libsodium-dev libhidapi-dev libusb-1.0-0-dev gperf libreadline-dev
-    - name: Build
-      run: make release-static-linux-x86_64 -j2
-    - name: Upload Linux Artifacts
-      uses: actions/upload-artifact@master
-      with:
-        name: Linux x86_64
         path: 'build/**/**/gntl*'
