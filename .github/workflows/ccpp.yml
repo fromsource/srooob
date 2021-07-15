@@ -10,7 +10,8 @@ jobs:
       with:
         submodules: recursive
     - name: Update Brew & Install GNTL Dependencies
-      run: brew update && brew install autoconf autogen automake binutils coreutils libsodium openssl pkg-config boost hidapi ldns expat libunwind-headers readline    - name: Build
+      run: brew update && brew install autoconf autogen automake binutils coreutils libsodium openssl pkg-config boost hidapi ldns expat libunwind-headers readline
+    - name: Build
       run: make release -j2
     - name: Upload macOS Artifacts
       uses: actions/upload-artifact@master
