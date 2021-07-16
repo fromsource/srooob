@@ -1,4 +1,4 @@
-name: ci/gh-actions/depends
+name: Depends ARM, Win, Linux
 
 on: [push, pull_request]
 
