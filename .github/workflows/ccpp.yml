@@ -19,7 +19,7 @@ jobs:
         ./bootstrap.sh
         ./b2 install
     - name: Build
-      run: make release-static-mac-x86_64 -j3
+      run: make release -j3
     - name: Upload macOS Artifacts
       uses: actions/upload-artifact@master
       with:
