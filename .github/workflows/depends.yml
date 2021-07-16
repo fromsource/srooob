@@ -3,7 +3,7 @@ name: Depends ARM, Win, Linux
 on: [push, pull_request]
 
 jobs:
-  build-macos:
+  Depends:
     runs-on: ubuntu-18.04
     env:
       CCACHE_COMPRESS: 1
