@@ -9,10 +9,17 @@ jobs:
     - uses: actions/checkout@v1
       with:
         submodules: recursive
-    - name: Update Brew & Install GNTL Dependencies
-      run: brew update && brew install autoconf autogen automake binutils coreutils libsodium openssl pkg-config boost hidapi ldns expat libunwind-headers readline
+    - name: Install GNTL Dependencies
+      run: HOMEBREW_NO_AUTO_UPDATE=1 brew install autoconf autogen automake binutils coreutils libsodium openssl pkg-config hidapi ldns expat libunwind-headers readline
+    - name: Install Boost 1.73
+      run: |
+        wget https://sourceforge.net/projects/boost/files/boost/1.73.0/boost_1_73_0.tar.gz
+        tar -xvf boost_1_73_0.tar.gz
+        cd boost_1_73_0
+        ./bootstrap.sh
+        ./b2 install
     - name: Build
-      run: make release -j2
+      run: make release-static-mac-x86_64 -j3
     - name: Upload macOS Artifacts
       uses: actions/upload-artifact@master
       with:
