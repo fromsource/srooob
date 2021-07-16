@@ -3,7 +3,7 @@ name: macOS
 on: [push, pull_request]
 
 jobs:
-  build-macos:
+  macOS:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v1
