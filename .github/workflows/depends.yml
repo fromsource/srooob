@@ -1,9 +1,9 @@
-name: ci/gh-actions/depends
+name: Depends ARM, Win, Linux
 
 on: [push, pull_request]
 
 jobs:
-  build-macos:
+  Depends:
     runs-on: ubuntu-18.04
     env:
       CCACHE_COMPRESS: 1
@@ -12,16 +12,16 @@ jobs:
       fail-fast: false
       matrix:
         toolchain:
-          - name: "build-depends-armv7"
+          - name: "ARM v7"
             host: "arm-linux-gnueabihf"
             packages: "python3 gperf g++-arm-linux-gnueabihf"
-          - name: "build-depends-armv8"
+          - name: "ARM v8"
             host: "aarch64-linux-gnu"
             packages: "python3 gperf g++-aarch64-linux-gnu"
-          - name: "build-windows-depends"
+          - name: "Windows x64"
             host: "x86_64-w64-mingw32"
             packages: "cmake python3 g++-mingw-w64-x86-64 qttools5-dev-tools"
-          - name: "build-ubuntu-depends"
+          - name: "Linux x86_64"
             host: "x86_64-unknown-linux-gnu"
             packages: "gperf cmake python3-zmq libdbus-1-dev libharfbuzz-dev"
     name: ${{ matrix.toolchain.name }}
@@ -38,19 +38,19 @@ jobs:
             contrib/depends/sdk-sources
         key: ccache-${{ matrix.toolchain.host }}-${{ github.sha }}
         restore-keys: ccache-${{ matrix.toolchain.host }}-
-    - name: set apt conf
+    - name: Set apt Conf
       run: |
         echo "Acquire::Retries \"3\";" | sudo tee -a /etc/apt/apt.conf.d/80-custom
         echo "Acquire::http::Timeout \"120\";" | sudo tee -a /etc/apt/apt.conf.d/80-custom
         echo "Acquire::ftp::Timeout \"120\";" | sudo tee -a /etc/apt/apt.conf.d/80-custom
-    - name: install dependencies
+    - name: Install GNTL Dependencies
       run: sudo apt update; sudo apt -y install build-essential libtool cmake autotools-dev automake pkg-config bsdmainutils curl git ca-certificates ccache ${{ matrix.toolchain.packages }}
-    - name: prepare w64-mingw32
+    - name: Prepare w64-mingw32
       if: ${{ matrix.toolchain.host == 'x86_64-w64-mingw32' }}
       run: |
         sudo update-alternatives --set ${{ matrix.toolchain.host }}-g++ $(which ${{ matrix.toolchain.host }}-g++-posix)
         sudo update-alternatives --set ${{ matrix.toolchain.host }}-gcc $(which ${{ matrix.toolchain.host }}-gcc-posix)
-    - name: build
+    - name: Build
       run: |
         ccache --max-size=150M
         make depends target=${{ matrix.toolchain.host }} -j2
