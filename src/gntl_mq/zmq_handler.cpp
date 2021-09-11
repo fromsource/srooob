@@ -36,6 +36,7 @@
 #include "cryptonote_basic/cryptonote_format_utils.h"
 #include "cryptonote_basic/blobdatatype.h"
 #include "ringct/rctSigs.h"
+#include "version.h"
 
 namespace gntlMQ
 {
@@ -454,6 +455,7 @@ namespace gntlMQ
     res.info.block_size_limit = res.info.block_weight_limit = m_core.get_blockchain_storage().get_current_cumulative_block_weight_limit();
     res.info.block_size_median = res.info.block_weight_median = m_core.get_blockchain_storage().get_current_cumulative_block_weight_median();
     res.info.start_time = (uint64_t)m_core.get_start_time();
+    res.info.version = GNTL_VERSION;
 
     res.status = cryptonote::rpc::Message::STATUS_OK;
     res.error_details = "";
