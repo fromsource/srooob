@@ -98,6 +98,10 @@ debug-asan:
 release-all:
 	mkdir -p $(builddir)/release
 	cd $(builddir)/release && cmake -D BUILD_TESTS=OFF -D CMAKE_BUILD_TYPE=Release $(topdir) && $(MAKE)
+	
+release-rpi:
+	mkdir -p $(builddir)/release-rpi
+	cd $(builddir)/release-rpi && cmake -D NO_AES=ON -D BUILD_TESTS=OFF -D CMAKE_BUILD_TYPE=Release $(topdir) && $(MAKE)
 
 release-static:
 	mkdir -p $(builddir)/release
