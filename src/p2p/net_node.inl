@@ -467,16 +467,14 @@ namespace nodetool
     }
     else if (nettype == cryptonote::STAGENET)
     {
-      full_addrs.insert("83.151.238.35:36661"); //UK
-      full_addrs.insert("83.151.238.36:36661"); //UK
+      full_addrs.insert("46.37.58.143:36661"); //UK
     }
     else if (nettype == cryptonote::FAKECHAIN)
     {
     }
     else
     {
-      full_addrs.insert("83.151.238.35:16661"); //UK
-      full_addrs.insert("83.151.238.36:16661"); //UK
+      full_addrs.insert("46.37.58.143:16661"); //UK
       full_addrs.insert("65.21.178.126:16661"); //Europe
       full_addrs.insert("65.21.245.45:16661"); //Europe
       full_addrs.insert("79.143.181.203:16661"); //Europe
