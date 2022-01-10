@@ -1,7 +1,7 @@
 # GNTL Coin
 <img src="https://github.com/The-GNTL-Project/Images/raw/master/GNTL_Icon_Round_200x200.png" alt="GNTL Coin">
 
-Copyright (c) 2021-2021, The GNTL Project    
+Copyright (c) 2021-2022, The GNTL Project    
 Copyright (c) 2018-2020, The Arqma Network   
 Copyright (c) 2014-2020, The Monero Project  
 Portions Copyright (c) 2012-2013 The Cryptonote developers.
@@ -49,16 +49,16 @@ Portions Copyright (c) 2012-2013 The Cryptonote developers.
 
 - Coin: [gntl.cash](https://gntl.cash)
 - Project: [gntl.co.uk](https://gntl.co.uk)
-- Mail (UK): [support@gntl.co.uk](mailto:support@gntl.co.uk)
-- Mail (US): [support@gntl.cash](mailto:support@gntl.cash)
+- Mail (Project): [support@gntl.co.uk](mailto:support@gntl.co.uk)
+- Mail (Coin): [support@gntl.cash](mailto:support@gntl.cash)
 - GitHub: [https://github.com/The-GNTL-Project/gntl](https://github.com/The-GNTL-Project/gntl)
 - Discord: [https://discord.gg/4HyVA2A](https://discord.gg/4HyVA2A)
 
 ## Other GNTL related Websites
 
-- GNTL Coin Blockchain Explorer: [explorer.pool.gntl.co.uk](https://explorer.pool.gntl.co.uk)
+- GNTL Coin Blockchain Explorer: [explorer.gntl.uk](https://explorer.gntl.uk)
 - GNTL Coin Pools Stream: [https://miningpoolstats.stream/gntlcoin](https://miningpoolstats.stream/gntlcoin)
-- GNTL Mining Pools Landing: [https://pool.gntl.co.uk/](https://pool.gntl.co.uk/)
+- GNTL Mining Pools Landing: [https://pools.gntl.uk/](https://pools.gntl.uk/)
 - GNTL Mining Pools Stream: [https://miningpoolstats.stream/gntl.co.uk_pools](https://miningpoolstats.stream/gntl.co.uk_pools)
 - GNTL Mining Pools Crypunit: [https://www.cryptunit.com/poolsgroup/GNTL-pools](https://www.cryptunit.com/poolsgroup/GNTL-pools)
 
@@ -125,56 +125,99 @@ The master branch is used for active development and can be either unstable or i
 
 ### Dependencies
 
-#### Our build has been tested on Ubuntu Server 18.04 Bionic Beaver, with the following:
+#### Our build has been tested on Ubuntu Server 20.04, with the following:
 
 ##### [Cmake v3.17.3](https://github.com/Kitware/CMake/releases/download/v3.17.3/cmake-3.17.3.tar.gz)
+```wget https://github.com/Kitware/CMake/releases/download/v3.17.3/cmake-3.17.3-Linux-x86_64.sh
+sudo mv cmake-3.17.3-Linux-x86_64.sh /opt
+cd /opt
+sudo chmod +x cmake-3.17.3-Linux-x86_64.sh
+sudo bash ./cmake-3.17.3-Linux-x86_64.sh
+sudo ln -s /opt/cmake-3.17.3-Linux-x86_64/bin/* /usr/local/bin
+cd ~
+```
 
 ##### [GCC 9.3](https://gcc.gnu.org/gcc-9/)
+```
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt update
+sudo apt install gcc-9 g++-9
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
+```
 
-##### [Boost 1.73.0](https://dl.bintray.com/boostorg/release/1.73.0/source/boost_1_73_0.tar.gz)
+##### [Boost 1.73.0](https://downloads.sourceforge.net/project/boost/boost/1.73.0/boost_1_73_0.tar.gz)
+```
+sudo apt remove libboost*
+sudo apt autoremove
+cd ~
+wget https://downloads.sourceforge.net/project/boost/boost/1.73.0/boost_1_73_0.tar.gz
+tar xzvf boost_1_73_0.tar.gz
+rm boost_1_73_0.tar.gz
+sudo mv boost_1_73_0 /opt/boost_1_73_0
+cd /opt/boost_1_73_0
+./bootstrap.sh --prefix=/opt/boost_1_73_0
+./b2 install
+export BOOST_ROOT=/opt/boost_1_73_0
+cd ~
+```
 
 The following table summarizes the tools and libraries required to build. A few of the libraries are also included in this repository (marked as "Vendored"). By default, the build uses the library installed on the system, and ignores the vendored sources. However, if no library is found installed on the system, then the vendored source will be built and used. The vendored sources are also used for statically-linked builds because distribution packages often include only shared library binaries (`.so`) but not static library archives (`.a`).
 
 | Dep          | Min. version  | Vendored | Debian/Ubuntu pkg  | Arch pkg     | Fedora            | Optional | Purpose        |
 | ------------ | ------------- | -------- | ------------------ | ------------ | ----------------- | -------- | -------------- |
-| GCC          | 7.3.0         | NO       | `build-essential`  | `base-devel` | `gcc`             | NO       |                |
+| autoconf     | 2.69          | NO       | `autoconf`         | ?            | ?                 | NO       |                |
+| automake     | 1.16          | NO       | `automake`         | ?            | ?                 | NO       |                |
+| Boost        | 1.71          | NO       | `libboost-all-dev` | `boost`      | `boost-devel`     | NO       | C++ libraries  |
 | CMake        | 3.17.3        | NO       | `cmake`            | `cmake`      | `cmake`           | NO       |                |
-| pkg-config   | any           | NO       | `pkg-config`       | `base-devel` | `pkgconf`         | NO       |                |
-| Boost        | 1.73          | NO       | `libboost-all-dev` | `boost`      | `boost-devel`     | NO       | C++ libraries  |
+| Doxygen      | 1.8.17        | NO       | `doxygen`          | `doxygen`    | `doxygen`         | YES      | Documentation  |
+| expat        | 2.2.9         | NO       | `libexpat1-dev`    | `expat`      | `expat-devel`     | YES      | XML parsing    |
+| GCC          | 9.3.0         | NO       | `gcc-9 g++-9`      | ?            | ?                 | NO       |                |
+| gperf        | 3.1           | NO       | `gperf`            | ?            | ?                 | NO       |                |
+| Graphviz     | 2.42.2        | NO       | `graphviz`         | `graphviz`   | `graphviz`        | YES      | Documentation  |
+| GTest        | 1.10.0        | YES      | `libgtest-dev`[1]  | `gtest`      | `gtest-devel`     | YES      | Test suite     |
+| HIDAPI       | 0.9.0         | NO       | `libhidapi-dev`    | ?            | ?                 | NO       | for Device     |
+| miniupnpc    | 2.1.20190824  | NO       | `miniupnpc`        | ?            | ?                 | NO       |                |
+| ldns         | 1.7.0         | NO       | `libldns-dev`      | `ldns`       | `ldns-devel`      | YES      | SSL toolkit    |
+| libevent     | 2.1.11        | NO       | `libevent-dev`     | ?            | ?                 | NO       |                |
+| liblzma      | 5.2.4         | NO       | `liblzma-dev`      | `xz`         | `xz-devel`        | YES      | For libunwind  |
+| libreadline  | 8.0           | NO       | `libreadline-dev`  | `readline`   | `readline-devel`  | YES      | Input editing  |
+| libsodium    | 1.0.18        | NO       | `libsodium-dev`    | ?            | `libsodium-devel` | NO       | Cryptography   |
+| libtool      | 2.4.6         | NO       | `libtool-bin`      | ?            | ?                 | NO       |                |
+| libudev      | 245.4         | NO       | `libudev-dev`      | ?            | ?                 | NO       |                |
+| libunbound   | 1.9.4         | NO       | `libunbound-dev`   | ?            | ?                 | NO       |                |
+| libunwind    | 1.2.1         | NO       | `libunwind-dev`    | `libunwind`  | `libunwind-devel` | YES      | Stack traces   |
+| libusb-1.0   | 1.0.23        | NO       | `libusb-1.0-0-dev` | ?            | ?                 | NO       |                |
+| libzmq5      | 4.3.2         | NO       | `libzmq5-dev`      | ?            | ?                 | NO       |                |
 | OpenSSL      | 1.1.1         | NO       | `libssl-dev`       | `openssl`    | `openssl-devel`   | NO       | sha256 sum     |
-| libsodium    | 1.0.16        | NO       | `libsodium-dev`    | ?            | `libsodium-devel` | NO       | Cryptography   |
-| libunwind    | any           | NO       | `libunwind8-dev`   | `libunwind`  | `libunwind-devel` | YES      | Stack traces   |
-| liblzma      | any           | NO       | `liblzma-dev`      | `xz`         | `xz-devel`        | YES      | For libunwind  |
-| libreadline  | 6.3.0         | NO       | `libreadline6-dev` | `readline`   | `readline-devel`  | YES      | Input editing  |
-| ldns         | 1.6.17        | NO       | `libldns-dev`      | `ldns`       | `ldns-devel`      | YES      | SSL toolkit    |
-| expat        | 1.1           | NO       | `libexpat1-dev`    | `expat`      | `expat-devel`     | YES      | XML parsing    |
-| GTest        | 1.5           | YES      | `libgtest-dev`[1]  | `gtest`      | `gtest-devel`     | YES      | Test suite     |
-| Doxygen      | any           | NO       | `doxygen`          | `doxygen`    | `doxygen`         | YES      | Documentation  |
-| Graphviz     | any           | NO       | `graphviz`         | `graphviz`   | `graphviz`        | YES      | Documentation  |
-| HIDAPI       | ?             | NO       | `libhidapi-dev`    | ``           | ``                | NO       | for Device     |
-| libusb-1.0   | 1.0           | NO       | `libusb-1.0-0-dev` | ``           | ``                | NO       |                |
-| libudev      | ?             | NO       | `libudev-dev`      | ``           | ``                | NO       |                |
+| pkg-config   | 0.29.1        | NO       | `pkg-config`       | `base-devel` | `pkgconf`         | NO       |                |
+| xsltproc     | 1.1.34        | NO       | `xsltproc`         | ?            | ?                 | NO       |                |
+
 -------------------------------------------------------------------------------------------------------------------------------
 
 
-Debian / Ubuntu one liner for all dependencies (you must have cmake, gcc and boost installed as mentioned above):
+#### Debian / Ubuntu one liner for all dependencies (you must have cmake, gcc and boost installed as mentioned above):
 ```
-sudo apt update && sudo apt install --yes git build-essential curl pkg-config libssl-dev libsodium-dev libunwind-dev liblzma-dev libreadline-dev libldns-dev libexpat1-dev doxygen graphviz libudev-dev libusb-1.0-0-dev libhidapi-dev xsltproc gperf autoconf automake libtool-bin libunbound-dev miniupnpc libevent-dev libzmq5-dev
+sudo apt update && sudo apt install --yes git autoconf automake build-essential curl doxygen libexpat1-dev gperf graphviz libhidapi-dev miniupnpc libldns-dev libevent-dev liblzma-dev libreadline-dev libsodium-dev libtool-bin libudev-dev libunbound-dev libunwind-dev libusb-1.0-0-dev libssl-dev libzmq5-dev pkg-config xsltproc
 ```
 
-[1] On Debian/Ubuntu `libgtest-dev` only includes sources and headers. You must
-build the library binary manually. This can be done with the following command:
+[1] On Debian/Ubuntu `libgtest-dev` only includes sources and headers. You must build the library binary manually. This can be done with the following command:
+
+**NOTE**: Some Linux versions install this in a sub-folder, so we've included 2 move comamnds, so 1 of them will show **No such file or directory**, which is fine.
 ```
-sudo apt install -y libgtest-dev && cd /usr/src/gtest && sudo cmake . && sudo make && sudo mv libg* /usr/lib/
+sudo apt install -y libgtest-dev && cd /usr/src/gtest && sudo cmake . && sudo make
+sudo mv libg* /usr/lib/
+sudo mv lib/libg* /usr/lib/
 cd ~
 ```
 
-Install all dependencies at once on OSX:
+#### OSX one liner for all dependencies:
 ```
 brew update && brew bundle --file=contrib/apple/brew
 ```
 
 ### Cloning the repository
+**NOTE**: We will use the **v1.0.1** branch as an example, you should switch to the most recent released branch.
 
 Clone recursively to pull-in needed submodule(s):
 
@@ -185,7 +228,7 @@ git clone --recursive https://github.com/The-GNTL-Project/gntl
 If you already have a repo cloned, initialize and update:
 
 ```
-cd gntl && git checkout <branch or release>
+cd gntl && git checkout v1.0.1
 git submodule init && git submodule update
 ```
 
@@ -195,12 +238,13 @@ GNTL uses the CMake build system and a top-level [Makefile](Makefile) that invok
 
 #### Linux and OS X
 
-* Install the dependencies
-
-* Change to the root of the source code directory, switch branch and build:
+* Change to the root of the source code directory, switch branch, and build:
 
 ```
-cd gntl && git checkout <branch or release> && USE_SINGLE_BUILDDIR=1 make release
+cd gntl
+git checkout v1.0.1
+USE_SINGLE_BUILDDIR=1 make release
+cd ~
 ```
 
 *Optional*: If your machine has several cores and enough memory, enable parallel build by running `make -j<number of threads>` instead of `make`. For this to be worthwhile, the machine should have one core and about 2GB of RAM available per thread.
@@ -208,6 +252,8 @@ cd gntl && git checkout <branch or release> && USE_SINGLE_BUILDDIR=1 make releas
 * The resulting executables can be found in: `build/release/bin`
 
 * Add `PATH="$PATH:$HOME/gntl/build/release/bin"` to `.profile`
+
+* Run `. ~/.profile` to reload profile changes.
 
 * Run GNTL with `gntld --detach`
 
@@ -340,9 +386,9 @@ Please make sure you get the armv7 version at present the armv8 wont work on 64b
 
 (We will renames file for easy typing later on)
 ```
-wget https://gntl.cash/downloads/GNTL-v0.1.0.1-arm-linux-gnueabihf.tar.gz
-tar -xf GNTL-v0.1.0.1-arm-linux-gnueabihf.tar.gz
-rm -r GNTL-v0.1.0.1-arm-linux-gnueabihf.tar.gz
+wget https://gntl.cash/downloads/GNTL-v1.0.1-arm-linux-gnueabihf.tar.gz
+tar -xf GNTL-v1.0.1-arm-linux-gnueabihf.tar.gz
+rm -r GNTL-v1.0.1-arm-linux-gnueabihf.tar.gz
 cd GNTL-arm-linux-gnueabihf
 mv GNTL-arm-linux-gnueabihf gntl
 ```
