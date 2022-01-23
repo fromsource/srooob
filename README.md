@@ -18,12 +18,11 @@ Portions Copyright (c) 2012-2013 The Cryptonote developers.
   - [License](#license)
   - [Contributing](#contributing)
   - [Compiling GNTL from source](#compiling-gntl-from-source)
-  - [Build](#build)
-    - [IMPORTANT](#important)
-    - [Dependencies](#dependencies)
-    - [Cloning the repository](#cloning-the-repository)
-    - [Build instructions](#build-instructions)
-  - [Running gntld](#running-gntld)
+    - [Build Process](#build-process)
+      - [Install the Dependencies](#install-the-dependencies)
+      - [Start the Build](#start-the-build)
+        - [Running the Built Executables](#running-the-built-executables)
+    - [Cross Compiling](#cross-compiling)
   - [Internationalization](#internationalization)
   - [Using Tor](#using-tor)
     - [Tails](#tails)
@@ -48,15 +47,16 @@ Portions Copyright (c) 2012-2013 The Cryptonote developers.
 ## Development Resources
 
 - Coin: [gntl.cash](https://gntl.cash)
-- Project: [gntl.co.uk](https://gntl.co.uk)
-- Mail (Project): [support@gntl.co.uk](mailto:support@gntl.co.uk)
+- Project: [gntl.uk](https://gntl.uk)
+- Mail (Project): [support@gntl.uk](mailto:support@gntl.uk)
 - Mail (Coin): [support@gntl.cash](mailto:support@gntl.cash)
 - GitHub: [https://github.com/The-GNTL-Project/gntl](https://github.com/The-GNTL-Project/gntl)
 - Discord: [https://discord.gg/4HyVA2A](https://discord.gg/4HyVA2A)
 
 ## Other GNTL related Websites
 
-- GNTL Coin Blockchain Explorer: [explorer.gntl.uk](https://explorer.gntl.uk)
+- GNTL Coin Blockchain Explorer (Primary): [explorer.gntl.cash](https://explorer.gntl.cash)
+- GNTL Coin Blockchain Explorer (Backup): [explorer.gntl.uk](https://explorer.gntl.uk)
 - GNTL Coin Pools Stream: [https://miningpoolstats.stream/gntlcoin](https://miningpoolstats.stream/gntlcoin)
 - GNTL Mining Pools Landing: [https://pools.gntl.uk/](https://pools.gntl.uk/)
 - GNTL Mining Pools Stream: [https://miningpoolstats.stream/gntl.co.uk_pools](https://miningpoolstats.stream/gntl.co.uk_pools)
@@ -113,54 +113,17 @@ See [LICENSE](LICENSE).
 If you want to help out, see [CONTRIBUTING](CONTRIBUTING.md) for a set of guidelines.
 
 ## Compiling GNTL from source
+**Our build has been tested on Debian 11 and Ubuntu Server 20.04.  Other versions of OS should work, but are out of scope in this guide**
 
-## Build
-
-### IMPORTANT
+### Build Process
+**IMPORTANT**
 
 The master branch is used for active development and can be either unstable or incompatible with release software. Please compile release branches instead.
 
 [![TravisCI master branch](https://img.shields.io/travis/gntl/gntl/master?label=master%20branch&style=for-the-badge)](https://travis-ci.org/gntl/gntl)
 ![Monitored by DiscordHooks](https://img.shields.io/static/v1?label=Monitored%20by&message=DiscordHooks&color=brightgreen&style=for-the-badge)
 
-### Dependencies
-
-#### Our build has been tested on Ubuntu Server 20.04, with the following:
-
-##### [Cmake v3.17.3](https://github.com/Kitware/CMake/releases/download/v3.17.3/cmake-3.17.3.tar.gz)
-```wget https://github.com/Kitware/CMake/releases/download/v3.17.3/cmake-3.17.3-Linux-x86_64.sh
-sudo mv cmake-3.17.3-Linux-x86_64.sh /opt
-cd /opt
-sudo chmod +x cmake-3.17.3-Linux-x86_64.sh
-sudo bash ./cmake-3.17.3-Linux-x86_64.sh
-sudo ln -s /opt/cmake-3.17.3-Linux-x86_64/bin/* /usr/local/bin
-cd ~
-```
-
-##### [GCC 9.3](https://gcc.gnu.org/gcc-9/)
-```
-sudo apt install software-properties-common
-sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-sudo apt update
-sudo apt install gcc-9 g++-9
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
-```
-
-##### [Boost 1.73.0](https://downloads.sourceforge.net/project/boost/boost/1.73.0/boost_1_73_0.tar.gz)
-```
-sudo apt remove libboost*
-sudo apt autoremove
-cd ~
-wget https://downloads.sourceforge.net/project/boost/boost/1.73.0/boost_1_73_0.tar.gz
-tar xzvf boost_1_73_0.tar.gz
-rm boost_1_73_0.tar.gz
-sudo mv boost_1_73_0 /opt/boost_1_73_0
-cd /opt/boost_1_73_0
-./bootstrap.sh --prefix=/opt/boost_1_73_0
-./b2 install
-export BOOST_ROOT=/opt/boost_1_73_0
-cd ~
-```
+**Tools and Libraries Used**
 
 The following table summarizes the tools and libraries required to build. A few of the libraries are also included in this repository (marked as "Vendored"). By default, the build uses the library installed on the system, and ignores the vendored sources. However, if no library is found installed on the system, then the vendored source will be built and used. The vendored sources are also used for statically-linked builds because distribution packages often include only shared library binaries (`.so`) but not static library archives (`.a`).
 
@@ -168,14 +131,14 @@ The following table summarizes the tools and libraries required to build. A few 
 | ------------ | ------------- | -------- | ------------------ | ------------ | ----------------- | -------- | -------------- |
 | autoconf     | 2.69          | NO       | `autoconf`         | ?            | ?                 | NO       |                |
 | automake     | 1.16          | NO       | `automake`         | ?            | ?                 | NO       |                |
-| Boost        | 1.71          | NO       | `libboost-all-dev` | `boost`      | `boost-devel`     | NO       | C++ libraries  |
+| Boost        | 1.73          | NO       | `libboost-all-dev` | `boost`      | `boost-devel`     | NO       | C++ libraries  |
 | CMake        | 3.17.3        | NO       | `cmake`            | `cmake`      | `cmake`           | NO       |                |
 | Doxygen      | 1.8.17        | NO       | `doxygen`          | `doxygen`    | `doxygen`         | YES      | Documentation  |
 | expat        | 2.2.9         | NO       | `libexpat1-dev`    | `expat`      | `expat-devel`     | YES      | XML parsing    |
 | GCC          | 9.3.0         | NO       | `gcc-9 g++-9`      | ?            | ?                 | NO       |                |
 | gperf        | 3.1           | NO       | `gperf`            | ?            | ?                 | NO       |                |
 | Graphviz     | 2.42.2        | NO       | `graphviz`         | `graphviz`   | `graphviz`        | YES      | Documentation  |
-| GTest        | 1.10.0        | YES      | `libgtest-dev`[1]  | `gtest`      | `gtest-devel`     | YES      | Test suite     |
+| GTest        | 1.10.0        | YES      | `libgtest-dev`     | `gtest`      | `gtest-devel`     | YES      | Test suite     |
 | HIDAPI       | 0.9.0         | NO       | `libhidapi-dev`    | ?            | ?                 | NO       | for Device     |
 | miniupnpc    | 2.1.20190824  | NO       | `miniupnpc`        | ?            | ?                 | NO       |                |
 | ldns         | 1.7.0         | NO       | `libldns-dev`      | `ldns`       | `ldns-devel`      | YES      | SSL toolkit    |
@@ -195,50 +158,83 @@ The following table summarizes the tools and libraries required to build. A few 
 
 -------------------------------------------------------------------------------------------------------------------------------
 
+### Install the Dependencies 
 
-#### Debian / Ubuntu one liner for all dependencies (you must have cmake, gcc and boost installed as mentioned above):
+#### Debian / Ubuntu dependancies
+
+##### Install Cmake v3.17.3
 ```
-sudo apt update && sudo apt install --yes git autoconf automake build-essential curl doxygen libexpat1-dev gperf graphviz libhidapi-dev miniupnpc libldns-dev libevent-dev liblzma-dev libreadline-dev libsodium-dev libtool-bin libudev-dev libunbound-dev libunwind-dev libusb-1.0-0-dev libssl-dev libzmq5-dev pkg-config xsltproc
+wget https://github.com/Kitware/CMake/releases/download/v3.17.3/cmake-3.17.3-Linux-x86_64.sh
+sudo mv cmake-3.17.3-Linux-x86_64.sh /opt
+cd /opt
+sudo chmod +x cmake-3.17.3-Linux-x86_64.sh
+sudo bash ./cmake-3.17.3-Linux-x86_64.sh
+sudo rm cmake-3.17.3-Linux-x86_64.sh
+sudo ln -s /opt/cmake-3.17.3-Linux-x86_64/bin/* /usr/local/bin
+cd ~
 ```
 
-[1] On Debian/Ubuntu `libgtest-dev` only includes sources and headers. You must build the library binary manually. This can be done with the following command:
+##### Install GCC 9.3
+```
+sudo apt update -y
+sudo apt install gcc-9 g++-9 -y
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
+```
 
-**NOTE**: Some Linux versions install this in a sub-folder, so we've included 2 move comamnds, so 1 of them will show **No such file or directory**, which is fine.
+##### Install Boost 1.73.0
+```
+sudo apt remove libboost* -y
+sudo apt autoremove -y
+wget https://downloads.sourceforge.net/project/boost/boost/1.73.0/boost_1_73_0.tar.gz
+tar xzvf boost_1_73_0.tar.gz
+rm boost_1_73_0.tar.gz
+sudo mv boost_1_73_0 /opt/boost_1_73_0
+cd /opt/boost_1_73_0
+./bootstrap.sh --prefix=/opt/boost_1_73_0
+./b2 install
+export BOOST_ROOT=/opt/boost_1_73_0
+cd ~
+```
+
+##### Install All other Dependencies
+```
+sudo apt update && sudo apt install -y git autoconf automake build-essential curl doxygen libexpat1-dev gperf graphviz libhidapi-dev miniupnpc libldns-dev libevent-dev liblzma-dev libreadline-dev libsodium-dev libtool-bin libudev-dev libunbound-dev libunwind-dev libusb-1.0-0-dev libssl-dev libzmq5-dev pkg-config xsltproc
+```
+
+##### Install libgtest-dev
+`libgtest-dev` only includes sources and headers.  You must build the library binary manually.  This can be done with the following command:
+
 ```
 sudo apt install -y libgtest-dev && cd /usr/src/gtest && sudo cmake . && sudo make
-sudo mv libg* /usr/lib/
 sudo mv lib/libg* /usr/lib/
 cd ~
 ```
 
-#### OSX one liner for all dependencies:
+#### OSX dependancies
 ```
 brew update && brew bundle --file=contrib/apple/brew
 ```
 
-### Cloning the repository
+### Start the Build
+GNTL uses the CMake build system and a top-level [Makefile](Makefile) that invokes cmake commands as needed.
+
 **NOTE**: We will use the **v1.0.1** branch as an example, you should switch to the most recent released branch.
 
-Clone recursively to pull-in needed submodule(s):
-
+#### Clone the Repository recursively to pull-in needed submodule(s)
 ```
 git clone --recursive https://github.com/The-GNTL-Project/gntl
 ```
 
-If you already have a repo cloned, initialize and update:
-
+##### If you already have a repo cloned, initialize and update:
 ```
 cd gntl && git checkout v1.0.1
 git submodule init && git submodule update
 ```
 
-### Build instructions
-
-GNTL uses the CMake build system and a top-level [Makefile](Makefile) that invokes cmake commands as needed.
-
-#### Linux and OS X
-
+#### Debian / Ubuntu / OS X
 * Change to the root of the source code directory, switch branch, and build:
+
+**NOTE**: If your machine has several cores and enough memory, enable parallel build by running `make -j<number of threads>` instead of `make` below.  For this to be worthwhile, the machine should have one core and about 2GB of RAM available per thread.
 
 ```
 cd gntl
@@ -247,44 +243,18 @@ USE_SINGLE_BUILDDIR=1 make release
 cd ~
 ```
 
-*Optional*: If your machine has several cores and enough memory, enable parallel build by running `make -j<number of threads>` instead of `make`. For this to be worthwhile, the machine should have one core and about 2GB of RAM available per thread.
+##### Running the Built Executables
+The resulting executables can be found in: `build/release/bin`
 
-* The resulting executables can be found in: `build/release/bin`
+Add `PATH="$PATH:$HOME/gntl/build/release/bin"` to `.profile`
 
-* Add `PATH="$PATH:$HOME/gntl/build/release/bin"` to `.profile`
+Run `. ~/.profile` to reload profile changes.
 
-* Run `. ~/.profile` to reload profile changes.
+Run GNTL Daemon using `gntld --detach`
 
-* Run GNTL with `gntld --detach`
-
-* **Optional**: build and run the test suite to verify the binaries:
-
-```
-make release-test
-```
-
-*NOTE*: `core_tests` test may take a few hours to complete.
-
-* **Optional**: to build binaries suitable for debugging:
-
-```
-make debug
-```
-
-* **Optional**: to build statically-linked binaries:
-
-```
-make release-static
-```
-
-Dependencies need to be built with -fPIC. Static libraries usually aren't, so you may have to build them yourself with `-fPIC`. Refer to their documentation for how to build them.
-
-* **Optional**: build documentation in `doc/html` (omit `HAVE_DOT=YES` if `graphviz` is not installed):
-
-	HAVE_DOT=YES doxygen Doxyfile
+Other executables, such as `gntl-wallet-cli` are also available in `build/release/bin`
 
 #### Raspberry Pi Zero
-
 Tested on a Raspberry Pi Zero with a clean install of minimal Raspbian Stretch (2017-09-07 or later) from https://www.raspberrypi.org/downloads/raspbian/. If you are using Raspian Jessie, [please see note in the following section](#note-for-raspbian-jessie-users).
 
 * `apt-get update && apt-get upgrade` to install all of the latest software
@@ -322,7 +292,7 @@ make release
 
 * You may wish to reduce the size of the swap file after the build has finished, and delete the boost directory from your home directory
 
-#### *Note for Raspbian Jessie users:*
+#### Raspbian Jessie
 
 If you are using the older Raspbian Jessie image, compiling GNTL is a bit more complicated. The version of Boost available in the Debian Jessie repositories is too old to use with GNTL, and thus you must compile a newer version yourself. The following explains the extra steps, and has been tested on a Raspberry Pi 2 with a clean install of minimal Raspbian Jessie.
 
@@ -409,12 +379,8 @@ sudo ./testrun.sh ~/gntl/gntl-wallet-cli
 ```
 
 #### Windows 10:
-
-Binaries for Windows are built on Windows using the MinGW toolchain within
-[MSYS2 environment](http://msys2.github.io). The MSYS2 environment emulates a
-POSIX system. The toolchain runs within the environment and *cross-compiles*
-binaries that can run outside of the environment as a regular Windows
-application.
+Binaries for Windows are built on Windows using the MinGW toolchain within [MSYS2 environment](http://msys2.github.io). The MSYS2 environment emulates a
+POSIX system. The toolchain runs within the environment and *cross-compiles* binaries that can run outside of the environment as a regular Windows application.
 
 **Preparing the build environment**
 
@@ -484,145 +450,21 @@ make debug-static-win
 
 *** GNTL does Not support 32-bit Windows anymore ***
 
-#### FreeBSD:
-
-The project can be built from scratch by following instructions for Linux above. If you are running gntl in a jail you need to add the flag: `allow.sysvipc=1` to your jail configuration, otherwise lmdb will throw the error message: `Failed to open lmdb environment: Function not implemented`.
-
-We expect to add GNTL into the ports tree in the near future, which will aid in managing installations using ports or packages.
-
-#### OpenBSD < 6.2
-
-This has been tested on OpenBSD 5.8.
-
-You will need to add a few packages to your system. `pkg_add db cmake gcc gcc-libs g++ miniupnpc gtest`.
-
-The doxygen and graphviz packages are optional and require the xbase set.
-
-The Boost package has a bug that will prevent librpc.a from building correctly. In order to fix this, you will have to Build boost yourself from scratch. Follow the directions here (under "Building Boost"):
-https://github.com/bitcoin/bitcoin/blob/master/doc/build-openbsd.md
-
-You will have to add the serialization, date_time, and regex modules to Boost when building as they are needed by GNTL.
-
-To build:
-```
-env CC=egcc CXX=eg++ CPP=ecpp DEVELOPER_LOCAL_TOOLS=1 BOOST_ROOT=/path/to/the/boost/you/built make release-static-64
-```
-
-#### OpenBSD >= 6.2
-
-You will need to add a few packages to your system. `pkg_add cmake miniupnpc zeromq libiconv`.
-
-The doxygen and graphviz packages are optional and require the xbase set.
-
-
-Build the Boost library using clang. This guide is derived from: https://github.com/bitcoin/bitcoin/blob/master/doc/build-openbsd.md
-
-We assume you are compiling with a non-root user and you have `doas` enabled.
-
-Note: do not use the boost package provided by OpenBSD, as we are installing boost to `/usr/local`.
-
-### Create boost building directory
-```
-mkdir ~/boost
-cd ~/boost
-```
-
-### Fetch boost source
-```
-ftp -o boost_1_64_0.tar.bz2 https://netcologne.dl.sourceforge.net/project/boost/boost/1.64.0/boost_1_64_0.tar.bz2
-```
-
-### MUST output: (SHA256) boost_1_64_0.tar.bz2: OK
-```
-echo "7bcc5caace97baa948931d712ea5f37038dbb1c5d89b43ad4def4ed7cb683332 boost_1_64_0.tar.bz2" | sha256 -c
-tar xfj boost_1_64_0.tar.bz2
-```
-
-### Fetch and apply boost patches, required for OpenBSD
-```
-ftp -o boost_test_impl_execution_monitor_ipp.patch https://raw.githubusercontent.com/openbsd/ports/bee9e6df517077a7269ff0dfd57995f5c6a10379/devel/boost/patches/patch-boost_test_impl_execution_monitor_ipp
-ftp -o boost_config_platform_bsd_hpp.patch https://raw.githubusercontent.com/openbsd/ports/90658284fb786f5a60dd9d6e8d14500c167bdaa0/devel/boost/patches/patch-boost_config_platform_bsd_hpp
-```
-
-### MUST output: (SHA256) boost_config_platform_bsd_hpp.patch: OK
-```
-echo "1f5e59d1154f16ee1e0cc169395f30d5e7d22a5bd9f86358f738b0ccaea5e51d boost_config_platform_bsd_hpp.patch" | sha256 -c
-```
-### MUST output: (SHA256) boost_test_impl_execution_monitor_ipp.patch: OK
-```
-echo "30cec182a1437d40c3e0bd9a866ab5ddc1400a56185b7e671bb3782634ed0206 boost_test_impl_execution_monitor_ipp.patch" | sha256 -c
-cd boost_1_64_0
-patch -p0 < ../boost_test_impl_execution_monitor_ipp.patch
-patch -p0 < ../boost_config_platform_bsd_hpp.patch
-```
-
-### Start building boost
-```
-echo 'using clang : : c++ : <cxxflags>"-fvisibility=hidden -fPIC" <linkflags>"" <archiver>"ar" <striper>"strip"  <ranlib>"ranlib" <rc>"" : ;' > user-config.jam
-./bootstrap.sh --without-icu --with-libraries=chrono,filesystem,program_options,system,thread,test,date_time,regex,serialization,locale --with-toolset=clang
-./b2 toolset=clang cxxflags="-stdlib=libc++" linkflags="-stdlib=libc++" -sICONV_PATH=/usr/local
-doas ./b2 -d0 runtime-link=shared threadapi=pthread threading=multi link=static variant=release --layout=tagged --build-type=complete --user-config=user-config.jam -sNO_BZIP2=1 -sICONV_PATH=/usr/local --prefix=/usr/local install
-```
-
-#### Solaris:
-
-The default Solaris linker can't be used, you have to install GNU ld, then run cmake manually with the path to your copy of GNU ld:
-
-```
-mkdir -p build/release
-cd build/release
-cmake -DCMAKE_LINKER=/path/to/ld -D CMAKE_BUILD_TYPE=Release ../..
-cd ../..
-make
-```
-
 #### Linux for Android (using docker):
 
-### Build image
+##### Build image
 ```
 docker build -f utils/build_scripts/android32.Dockerfile -t gntl-android .
 ```
-### Create container
+##### Create container
 ```
 docker create -it --name gntl-android gntl-android bash
 ```
-### Get binaries
+##### Get binaries
 ```
 docker cp gntl-android:/opt/android/gntl/build/release/bin .
 ```
-
-#### Building portable statically linked binaries
-
-By default, in either dynamically or statically linked builds, binaries target the specific host processor on which the build happens and are not portable to other processors. Portable binaries can be built using the following targets:
-
-* `make release-static-linux-x86_64` builds binaries on Linux on x86_64 portable across POSIX systems on x86_64 processors
-* `make release-static-linux-armv8` builds binaries on Linux portable across POSIX systems on armv8 processors
-* `make release-static-linux-armv7` builds binaries on Linux portable across POSIX systems on armv7 processors
-* `make release-static-linux-armv6` builds binaries on Linux portable across POSIX systems on armv6 processors
-* `make release-static-win` builds binaries on 64-bit Windows portable across 64-bit Windows systems
-
-#### Cross Compiling
-
-You can also cross-compile GNTL static binaries on Linux for Windows and macOS with the `depends` system.
-
-* `make depends target=x86_64-linux-gnu` for 64-bit linux binaries.
-* `make depends target=x86_64-w64-mingw32` for 64-bit windows binaries. Requires: python3 g++-mingw-w64-x86-64 wine1.6 bc
-* `make depends target=x86_64-apple-darwin19.2.0` for macOS binaries. Requires: cmake imagemagick libcap-dev librsvg2-bin libz-dev libbz2-dev libtiff-tools curl bsdmainutils python3-setuptools
-* `make depends target=arm-linux-gnueabihf` for armv7 binaries. Requires: g++-arm-linux-gnueabihf
-* `make depends target=aarch64-linux-gnu` for armv8 binaries. Requires: g++-aarch64-linux-gnu
-
-*** For `x86_64-apple-darwin19.2.0` you need to download SDK first ***        
-
-The required packages are the names for each toolchain on apt. Depending on your OS Distribution, they may have different names.
-
-Using `depends` might also be easier to compile GNTL on Windows than using MSYS. Activate Windows Subsystem for Linux (WSL) with a distribution (for example Ubuntu), install the apt build-essentials and follow the `depends` steps as stated above.
-
-#### Compability with older Linux Versions < GLIBC_2.25
-
-* `make depends-compat target=x86_64-linux-gnu` for 64-bit linux binaries.
-
-
-## Running gntld
+#### Running gntld
 
 The build places the binary in `bin/` sub-directory within the build directory
 from which cmake was invoked (repository root by default). To run in
@@ -653,6 +495,21 @@ config](utils/conf/gntld.conf).
 
 If you're on Mac, you may need to add the `--max-concurrency 1` option to
 gntl-wallet-cli, and possibly gntld, if you get crashes refreshing.
+
+### Cross Compiling
+You can also cross-compile GNTL static binaries on Linux for Windows and macOS with the `depends` system.
+
+* `make depends target=x86_64-linux-gnu` for 64-bit linux binaries.
+* `make depends target=x86_64-w64-mingw32` for 64-bit windows binaries. Requires: python3 g++-mingw-w64-x86-64 wine1.6 bc
+* `make depends target=x86_64-apple-darwin19.2.0` for macOS binaries. Requires: cmake imagemagick libcap-dev librsvg2-bin libz-dev libbz2-dev libtiff-tools curl bsdmainutils python3-setuptools
+* `make depends target=arm-linux-gnueabihf` for armv7 binaries. Requires: g++-arm-linux-gnueabihf
+* `make depends target=aarch64-linux-gnu` for armv8 binaries. Requires: g++-aarch64-linux-gnu
+
+*** For `x86_64-apple-darwin19.2.0` you need to download SDK first ***        
+
+The required packages are the names for each toolchain on apt. Depending on your OS Distribution, they may have different names.
+
+Using `depends` might also be easier to compile GNTL on Windows than using MSYS. Activate Windows Subsystem for Linux (WSL) with a distribution (for example Ubuntu), install the apt build-essentials and follow the `depends` steps as stated above.
 
 ## Internationalization
 
