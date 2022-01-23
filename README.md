@@ -128,7 +128,8 @@ The master branch is used for active development and can be either unstable or i
 #### Our build has been tested on Ubuntu Server 20.04, with the following:
 
 ##### [Cmake v3.17.3](https://github.com/Kitware/CMake/releases/download/v3.17.3/cmake-3.17.3.tar.gz)
-```wget https://github.com/Kitware/CMake/releases/download/v3.17.3/cmake-3.17.3-Linux-x86_64.sh
+```
+wget https://github.com/Kitware/CMake/releases/download/v3.17.3/cmake-3.17.3-Linux-x86_64.sh
 sudo mv cmake-3.17.3-Linux-x86_64.sh /opt
 cd /opt
 sudo chmod +x cmake-3.17.3-Linux-x86_64.sh
