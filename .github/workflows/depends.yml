@@ -79,8 +79,8 @@ jobs:
     - name: Tar binaries
       run: |
         cd build/${{ matrix.toolchain.host }}/release/bin/
-        tar -czvf ${{ matrix.toolchain.host }}.tar.gz *
+        tar -czvf ${{ matrix.toolchain.name }}.tar.gz *
     - uses: actions/upload-artifact@v2
       with:
         name: ${{ matrix.toolchain.name }}.tar.gz
-        path: build/${{ matrix.toolchain.host }}/release/bin/${{ matrix.toolchain.host }}.tar.gz
+        path: build/${{ matrix.toolchain.host }}/release/bin/${{ matrix.toolchain.name }}.tar.gz
