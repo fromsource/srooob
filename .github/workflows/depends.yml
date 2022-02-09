@@ -58,9 +58,11 @@ jobs:
           depends-${{ matrix.toolchain.host }}-${{ hashFiles('contrib/depends/packages/*') }}
           depends-${{ matrix.toolchain.host }}-
     - name: Set apt Conf
-      run: ${{env.APT_SET_CONF}}
+      run: |
+        ${{env.APT_SET_CONF}}
     - name: Install GNTL Dependencies
-      run: sudo apt update; sudo apt -y install build-essential libtool cmake autotools-dev automake pkg-config bsdmainutils curl git imagemagick libcap-dev librsvg2-bin libz-dev libtiff-tools python3-setuptools ca-certificates ccache ${{ matrix.toolchain.packages }}
+      run: |
+        sudo apt update; sudo apt -y install build-essential libtool cmake autotools-dev automake pkg-config bsdmainutils curl git imagemagick libcap-dev librsvg2-bin libz-dev libtiff-tools python3-setuptools ca-certificates ccache ${{ matrix.toolchain.packages }}
     - name: Prepare w64-mingw32
       if: ${{ matrix.toolchain.host == 'x86_64-w64-mingw32' }}
       run: |
@@ -81,5 +83,4 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: ${{ matrix.toolchain.name }}.tar.gz
-        path: |
-          ${{ matrix.toolchain.host }}.tar.gz
+        path: build/${{ matrix.toolchain.host }}/release/bin/${{ matrix.toolchain.host }}.tar.gz
