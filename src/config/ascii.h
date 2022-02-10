@@ -1,4 +1,4 @@
-// Copyright (c)2021, The GNTL Network
+// Copyright (c)2022, The GNTL Project
 // Copyright (c)2020, The Arqma Network
 // Copyright (c)2020, ArqTras
 // Portions of this software are available under BSD-3 license. Please see ORIGINAL-LICENSE for details
