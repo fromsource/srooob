@@ -1,4 +1,4 @@
-// Copyright (c) 2021-2021, The GNTL Project
+// Copyright (c) 2021-2022, The GNTL Project
 // Copyright (c) 2016, Monero Research Labs
 //
 // Author: Shen Noether <shen.noether@gmx.com>
