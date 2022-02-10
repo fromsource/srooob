@@ -356,11 +356,11 @@ Please make sure you get the armv7 version at present the armv8 wont work on 64b
 
 (We will renames file for easy typing later on)
 ```
-wget https://gntl.cash/downloads/GNTL-v1.0.2-arm-linux-gnueabihf.tar.gz
-tar -xf GNTL-v1.0.2-arm-linux-gnueabihf.tar.gz
-rm -r GNTL-v1.0.2-arm-linux-gnueabihf.tar.gz
-cd GNTL-arm-linux-gnueabihf
-mv GNTL-arm-linux-gnueabihf gntl
+wget https://gntl.cash/downloads/GNTL-v1.0.2-ARM-v7.tar.gz
+tar -xf GNTL-v1.0.2-ARM-v7.tar.gz
+rm -r GNTL-v1.0.2-ARM-v7.tar.gz
+cd GNTL-v1.0.2-ARM-v7
+mv GNTL-v1.0.2-ARM-v7 gntl
 ```
 
 * To run the wallet you need to run it in the glibc container we just built.
