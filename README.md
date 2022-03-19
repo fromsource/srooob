@@ -52,6 +52,7 @@ Portions Copyright (c) 2012-2013 The Cryptonote developers.
 - Mail (Coin): [support@gntl.cash](mailto:support@gntl.cash)
 - GitHub: [https://github.com/The-GNTL-Project/gntl](https://github.com/The-GNTL-Project/gntl)
 - Discord: [https://discord.gg/4HyVA2A](https://discord.gg/4HyVA2A)
+- Telegram: [https://t.me/gntlcoin](https://t.me/gntlcoin)
 
 ## Other GNTL related Websites
 
