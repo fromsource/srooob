@@ -77,22 +77,22 @@ function(gntl_add_library name)
 endfunction()
 
 function(gntl_add_library_with_deps)
-  cmake_parse_arguments(ARQMA_ADD_LIBRARY "" "NAME" "DEPENDS;SOURCES" ${ARGN})
-  source_group("${ARQMA_ADD_LIBRARY_NAME}" FILES ${ARQMA_ADD_LIBRARY_SOURCES})
+  cmake_parse_arguments(GNTL_ADD_LIBRARY "" "NAME" "DEPENDS;SOURCES" ${ARGN})
+  source_group("${GNTL_ADD_LIBRARY_NAME}" FILES ${GNTL_ADD_LIBRARY_SOURCES})
 
   # Define a ("virtual") object library and an actual library that links those
   # objects together. The virtual libraries can be arbitrarily combined to link
   # any subset of objects into one library archive. This is used for releasing
   # libwallet, which combines multiple components.
-  set(objlib obj_${ARQMA_ADD_LIBRARY_NAME})
-  add_library(${objlib} OBJECT ${ARQMA_ADD_LIBRARY_SOURCES})
-  add_library("${ARQMA_ADD_LIBRARY_NAME}" $<TARGET_OBJECTS:${objlib}>)
-  if(ARQMA_ADD_LIBRARY_DEPENDS)
-    add_dependencies(${objlib} ${ARQMA_ADD_LIBRARY_DEPENDS})
+  set(objlib obj_${GNTL_ADD_LIBRARY_NAME})
+  add_library(${objlib} OBJECT ${GNTL_ADD_LIBRARY_SOURCES})
+  add_library("${GNTL_ADD_LIBRARY_NAME}" $<TARGET_OBJECTS:${objlib}>)
+  if(GNTL_ADD_LIBRARY_DEPENDS)
+    add_dependencies(${objlib} ${GNTL_ADD_LIBRARY_DEPENDS})
   endif()
-  set_property(TARGET "${ARQMA_ADD_LIBRARY_NAME}" PROPERTY FOLDER "libs")
+  set_property(TARGET "${GNTL_ADD_LIBRARY_NAME}" PROPERTY FOLDER "libs")
   target_compile_definitions(${objlib}
-    PRIVATE $<TARGET_PROPERTY:${ARQMA_ADD_LIBRARY_NAME},INTERFACE_COMPILE_DEFINITIONS>)
+    PRIVATE $<TARGET_PROPERTY:${GNTL_ADD_LIBRARY_NAME},INTERFACE_COMPILE_DEFINITIONS>)
 endfunction()
 
 include(Version)
