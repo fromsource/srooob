@@ -15,13 +15,13 @@ See also each utility's "--help" option.
 
 `$ gntl-blockchain-export`
 
-This loads the existing blockchain and exports it to `$ARQMA_DATA_DIR/export/blockchain.raw`
+This loads the existing blockchain and exports it to `$GNTL_DATA_DIR/export/blockchain.raw`
 
 ### Import the exported file
 
 `$ gntl-blockchain-import`
 
-This imports blocks from `$ARQMA_DATA_DIR/export/blockchain.raw` (exported using the
+This imports blocks from `$GNTL_DATA_DIR/export/blockchain.raw` (exported using the
 `gntl-blockchain-export` tool as described above) into the current database.
 
 Defaults: `--batch on`, `--batch size 20000`, `--verify on`

@@ -19,24 +19,18 @@ jobs:
       fail-fast: false
       matrix:
         toolchain:
-          - name: "ARM-v7"
+          - name: "ARM-v7-Ubuntu-1804"
             host: "arm-linux-gnueabihf"
             packages: "python3 gperf g++-arm-linux-gnueabihf"
-          - name: "ARM-v8"
+          - name: "ARM-v8-Ubuntu-1804"
             host: "aarch64-linux-gnu"
             packages: "python3 gperf g++-aarch64-linux-gnu"
-          - name: "ARM-v8-Pi"
+          - name: "ARM-v8-Pi-Ubuntu-1804"
             host: "aarch64-linux-gnu"
             packages: "python3 gperf g++-aarch64-linux-gnu"
             cmake_opts: "-DNO_AES=ON"
-          - name: "Windows-x64"
-            host: "x86_64-w64-mingw32"
-            packages: "cmake python3 g++-mingw-w64-x86-64 qttools5-dev-tools"
-          - name: "Linux-x86_64"
+          - name: "Linux-x86_64-Ubuntu-1804"
             host: "x86_64-unknown-linux-gnu"
-            packages: "gperf cmake python3-zmq libdbus-1-dev libharfbuzz-dev"
-          - name: "macOS"
-            host: "x86_64-apple-darwin19.2.0"
             packages: "gperf cmake python3-zmq libdbus-1-dev libharfbuzz-dev"
     name: ${{ matrix.toolchain.name }}
     steps:
@@ -63,15 +57,6 @@ jobs:
     - name: Install GNTL Dependencies
       run: |
         sudo apt update; sudo apt -y install build-essential libtool cmake autotools-dev automake pkg-config bsdmainutils curl git imagemagick libcap-dev librsvg2-bin libz-dev libtiff-tools python3-setuptools ca-certificates ccache ${{ matrix.toolchain.packages }}
-    - name: Prepare w64-mingw32
-      if: ${{ matrix.toolchain.host == 'x86_64-w64-mingw32' }}
-      run: |
-        sudo update-alternatives --set ${{ matrix.toolchain.host }}-g++ $(which ${{ matrix.toolchain.host }}-g++-posix)
-        sudo update-alternatives --set ${{ matrix.toolchain.host }}-gcc $(which ${{ matrix.toolchain.host }}-gcc-posix)
-    - name: Add mac SDK
-      if: ${{ matrix.toolchain.host == 'x86_64-apple-darwin19.2.0' }}
-      run: |
-        git clone -b arqma https://github.com/malbit/MacOSX-SDKs.git contrib/depends/SDKs
     - name: Build
       run: |
         ${{env.CCACHE_SETTINGS}}

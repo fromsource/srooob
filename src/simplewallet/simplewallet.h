@@ -53,7 +53,7 @@
 #undef GNTL_DEFAULT_LOG_CATEGORY
 #define GNTL_DEFAULT_LOG_CATEGORY "wallet.simplewallet"
 
-constexpr const char ARQMA_DONATION_ADDR[] = "ar46iCiw5uB7SjnYhL5EJLP1LpqGkZbCcWhWgdbLL1c4DicNuYi3ZeRJPi8FFmEhYnagbxRyaQKyTYBA95JqmPcr1XZytK9o3";
+constexpr const char GNTL_DONATION_ADDR[] = "gnt1ibrAtYtThQWQ8QdeLPWGD9ZeqnDsJ9A4d86DMC2RD7frBSE1uZmFezsbW7TXHdNHYWDWsccRo8TpE55p2HWR74ofajRWc5";
 
 /*!
  * \namespace cryptonote
