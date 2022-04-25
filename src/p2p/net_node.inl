@@ -481,7 +481,7 @@ namespace nodetool
       full_addrs.insert("79.143.181.203:16661"); //Europe
       full_addrs.insert("47.181.202.47:16661"); //USA
       full_addrs.insert("68.168.100.207:16661"); //USA
-      full_addrs.insert("220.132.81.245:16661"); //Asia
+      full_addrs.insert("125.229.80.116:16661"); //Asia
     }
     return full_addrs;
   }
