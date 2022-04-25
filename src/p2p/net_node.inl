@@ -479,6 +479,7 @@ namespace nodetool
       full_addrs.insert("65.21.178.126:16661"); //Europe
       full_addrs.insert("65.21.245.45:16661"); //Europe
       full_addrs.insert("79.143.181.203:16661"); //Europe
+      full_addrs.insert("92.205.29.59:16661"); //Europe
       full_addrs.insert("47.181.202.47:16661"); //USA
       full_addrs.insert("68.168.100.207:16661"); //USA
       full_addrs.insert("125.229.80.116:16661"); //Asia
