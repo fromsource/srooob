@@ -1,4 +1,4 @@
-name: Depends Build
+name: Depends Ubuntu 20.04
 
 on: [push, pull_request]
 
@@ -78,9 +78,10 @@ jobs:
         make depends target=${{ matrix.toolchain.host }} cmake_opts=${{ matrix.toolchain.cmake_opts }} -j2
     - name: Tar binaries
       run: |
-        cd build/${{ matrix.toolchain.host }}/release/bin/
-        tar -czvf ${{ matrix.toolchain.name }}.tar.gz *
+        cd build/${{ matrix.toolchain.host }}/release/
+        mv bin ${{ matrix.toolchain.name }}
+        tar -czvf ${{ matrix.toolchain.name }}.tar.gz ${{ matrix.toolchain.name }}
     - uses: actions/upload-artifact@v2
       with:
         name: ${{ matrix.toolchain.name }}.tar.gz
-        path: build/${{ matrix.toolchain.host }}/release/bin/${{ matrix.toolchain.name }}.tar.gz
+        path: build/${{ matrix.toolchain.host }}/release/${{ matrix.toolchain.name }}.tar.gz
