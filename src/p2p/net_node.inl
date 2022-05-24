@@ -474,15 +474,15 @@ namespace nodetool
     }
     else
     {
-      full_addrs.insert("46.37.58.143:16661"); //UK
-      full_addrs.insert("88.208.212.174:16661"); //UK
-      full_addrs.insert("65.21.178.126:16661"); //Europe
-      full_addrs.insert("65.21.245.45:16661"); //Europe
-      full_addrs.insert("79.143.181.203:16661"); //Europe
-      full_addrs.insert("92.205.29.59:16661"); //Europe
-      full_addrs.insert("47.181.202.47:16661"); //USA
-      full_addrs.insert("68.168.100.207:16661"); //USA
-      full_addrs.insert("125.229.80.116:16661"); //Asia
+      full_addrs.insert("46.37.58.143:16661"); //UK - BKdilse
+      full_addrs.insert("88.208.212.174:16661"); //UK - BKdilse
+      full_addrs.insert("65.21.178.126:16661"); //Europe - baldtrooper
+      full_addrs.insert("65.21.245.45:16661"); //Europe - baldtrooper
+      full_addrs.insert("92.205.29.59:16661"); //Europe - Colinsky
+      full_addrs.insert("13.66.214.75:16661"); //USA - BKdilse
+      full_addrs.insert("47.181.202.47:16661"); //USA - Grok
+      full_addrs.insert("68.168.100.207:16661"); //USA - Eadrom
+      full_addrs.insert("125.229.80.116:16661"); //Asia - AzPool
     }
     return full_addrs;
   }
