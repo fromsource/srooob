@@ -219,7 +219,7 @@ brew update && brew bundle --file=contrib/apple/brew
 ### Start the Build
 GNTL uses the CMake build system and a top-level [Makefile](Makefile) that invokes cmake commands as needed.
 
-**NOTE**: We will use the **v1.0.3** branch as an example, you should switch to the most recent released branch.
+**NOTE**: We will use the **v1.0.4** branch as an example, you should switch to the most recent released branch.
 
 #### Clone the Repository recursively to pull-in needed submodule(s)
 ```
@@ -228,7 +228,7 @@ git clone --recursive https://github.com/The-GNTL-Project/gntl
 
 ##### If you already have a repo cloned, initialize and update:
 ```
-cd gntl && git checkout v1.0.3
+cd gntl && git checkout v1.0.4
 git submodule init && git submodule update
 ```
 
@@ -239,7 +239,7 @@ git submodule init && git submodule update
 
 ```
 cd gntl
-git checkout v1.0.3
+git checkout v1.0.4
 USE_SINGLE_BUILDDIR=1 make release
 cd ~
 ```
@@ -357,11 +357,11 @@ Please make sure you get the armv7 version at present the armv8 wont work on 64b
 
 (We will renames file for easy typing later on)
 ```
-wget https://gntl.cash/downloads/GNTL-ARM-v7-v1.0.3.tar.gz
-tar -xf GNTL-ARM-v7-v1.0.3.tar.gz
-rm -r GNTL-ARM-v7-v1.0.3.tar.gz
-cd GNTL-ARM-v7-v1.0.3
-mv GNTL-ARM-v7-v1.0.3 gntl
+wget https://gntl.cash/downloads/GNTL-ARM-v7-v1.0.4.tar.gz
+tar -xf GNTL-ARM-v7-v1.0.4.tar.gz
+rm -r GNTL-ARM-v7-v1.0.4.tar.gz
+cd GNTL-ARM-v7-v1.0.4
+mv GNTL-ARM-v7-v1.0.4 gntl
 ```
 
 * To run the wallet you need to run it in the glibc container we just built.
