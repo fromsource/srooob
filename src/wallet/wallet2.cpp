@@ -12159,16 +12159,16 @@ std::string wallet2::make_uri(const std::string &address, const std::string &pay
 //----------------------------------------------------------------------------------------------------
 bool wallet2::parse_uri(const std::string &uri, std::string &address, std::string &payment_id, uint64_t &amount, std::string &tx_description, std::string &recipient_name, std::vector<std::string> &unknown_parameters, std::string &error)
 {
-  static const std::string ARQMA_URI = "gntl:";
-  static const int ARQMA_URI_LEN = ARQMA_URI.length();
+  static const std::string GNTL_URI = "gntl:";
+  static const int GNTL_URI_LEN = GNTL_URI.length();
 
-  if (uri.substr(0, ARQMA_URI_LEN) != ARQMA_URI)
+  if (uri.substr(0, GNTL_URI_LEN) != GNTL_URI)
   {
-    error = std::string("URI has wrong scheme (expected ") + "\"" + ARQMA_URI + "\"): " + uri;
+    error = std::string("URI has wrong scheme (expected ") + "\"" + GNTL_URI + "\"): " + uri;
     return false;
   }
 
-  std::string remainder = uri.substr(ARQMA_URI_LEN);
+  std::string remainder = uri.substr(GNTL_URI_LEN);
   const char *ptr = strchr(remainder.c_str(), '?');
   address = ptr ? remainder.substr(0, ptr-remainder.c_str()) : remainder;
 

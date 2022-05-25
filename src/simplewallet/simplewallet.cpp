@@ -6515,11 +6515,11 @@ bool simple_wallet::donate(const std::vector<std::string> &args_)
   amount_str = local_args.back();
   local_args.pop_back();
   // push back address, amount, payment id
-  local_args.push_back(ARQMA_DONATION_ADDR);
+  local_args.push_back(GNTL_DONATION_ADDR);
   local_args.push_back(amount_str);
   if (!payment_id_str.empty())
     local_args.push_back(payment_id_str);
-  message_writer() << (boost::format(tr("Donating %s %s to The GNTL Project (donations.gntl.co.uk or %s).")) % amount_str % cryptonote::get_unit(cryptonote::get_default_decimal_point()) % ARQMA_DONATION_ADDR).str();
+  message_writer() << (boost::format(tr("Donating %s %s to The GNTL Project (donations.gntl.co.uk or %s).")) % amount_str % cryptonote::get_unit(cryptonote::get_default_decimal_point()) % GNTL_DONATION_ADDR).str();
   transfer(local_args);
   return true;
 }

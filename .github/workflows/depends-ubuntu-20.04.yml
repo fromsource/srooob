@@ -1,4 +1,4 @@
-name: Depends Build
+name: Depends Ubuntu 20.04
 
 on: [push, pull_request]
 
@@ -12,30 +12,30 @@ env:
     ccache --set-config=compression=true
 jobs:
   Depends:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     env:
       CCACHE_TEMPDIR: /tmp/.ccache-temp
     strategy:
       fail-fast: false
       matrix:
         toolchain:
-          - name: "ARM-v7"
+          - name: "ARM-v7-Ubuntu-2004"
             host: "arm-linux-gnueabihf"
             packages: "python3 gperf g++-arm-linux-gnueabihf"
-          - name: "ARM-v8"
+          - name: "ARM-v8-Ubuntu-2004"
             host: "aarch64-linux-gnu"
             packages: "python3 gperf g++-aarch64-linux-gnu"
-          - name: "ARM-v8-Pi"
+          - name: "ARM-v8-Pi-Ubuntu-2004"
             host: "aarch64-linux-gnu"
             packages: "python3 gperf g++-aarch64-linux-gnu"
             cmake_opts: "-DNO_AES=ON"
-          - name: "Windows-x64"
+          - name: "Windows-x64-Ubuntu-2004"
             host: "x86_64-w64-mingw32"
             packages: "cmake python3 g++-mingw-w64-x86-64 qttools5-dev-tools"
-          - name: "Linux-x86_64"
+          - name: "Linux-x86_64-Ubuntu-2004"
             host: "x86_64-unknown-linux-gnu"
             packages: "gperf cmake python3-zmq libdbus-1-dev libharfbuzz-dev"
-          - name: "macOS"
+          - name: "macOS-Ubuntu-2004"
             host: "x86_64-apple-darwin19.2.0"
             packages: "gperf cmake python3-zmq libdbus-1-dev libharfbuzz-dev"
     name: ${{ matrix.toolchain.name }}
@@ -78,9 +78,10 @@ jobs:
         make depends target=${{ matrix.toolchain.host }} cmake_opts=${{ matrix.toolchain.cmake_opts }} -j2
     - name: Tar binaries
       run: |
-        cd build/${{ matrix.toolchain.host }}/release/bin/
-        tar -czvf ${{ matrix.toolchain.name }}.tar.gz *
+        cd build/${{ matrix.toolchain.host }}/release/
+        mv bin gntl
+        tar -czvf ${{ matrix.toolchain.name }}.tar.gz gntl
     - uses: actions/upload-artifact@v2
       with:
         name: ${{ matrix.toolchain.name }}.tar.gz
-        path: build/${{ matrix.toolchain.host }}/release/bin/${{ matrix.toolchain.name }}.tar.gz
+        path: build/${{ matrix.toolchain.host }}/release/${{ matrix.toolchain.name }}.tar.gz
