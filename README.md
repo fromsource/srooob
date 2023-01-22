@@ -52,7 +52,7 @@ Portions Copyright (c) 2012-2013 The Cryptonote developers.
 - Mail (Coin): [support@gntl.cash](mailto:support@gntl.cash)
 - GitHub: [https://github.com/The-GNTL-Project/gntl](https://github.com/The-GNTL-Project/gntl)
 - Discord: [https://discord.gg/4HyVA2A](https://discord.gg/4HyVA2A)
-- Telegram: [https://t.me/gntlcoin](https://t.me/gntlcoin)
+- Telegram: [https://t.me/+9rrAXrpEWJ8xMmQ0](https://t.me/+9rrAXrpEWJ8xMmQ0)
 
 ## Other GNTL related Websites
 
@@ -60,7 +60,7 @@ Portions Copyright (c) 2012-2013 The Cryptonote developers.
 - GNTL Coin Blockchain Explorer (Backup): [explorer.gntl.uk](https://explorer.gntl.uk)
 - GNTL Coin Pools Stream: [https://miningpoolstats.stream/gntlcoin](https://miningpoolstats.stream/gntlcoin)
 - GNTL Mining Pools Landing: [https://pools.gntl.uk/](https://pools.gntl.uk/)
-- GNTL Mining Pools Stream: [https://miningpoolstats.stream/gntl.co.uk_pools](https://miningpoolstats.stream/gntl.co.uk_pools)
+- GNTL Mining Pools Stream: [https://miningpoolstats.stream/gntl.uk_pools](https://miningpoolstats.stream/gntl.uk_pools)
 - GNTL Mining Pools Crypunit: [https://www.cryptunit.com/poolsgroup/GNTL-pools](https://www.cryptunit.com/poolsgroup/GNTL-pools)
 
 ## Introduction
@@ -219,7 +219,7 @@ brew update && brew bundle --file=contrib/apple/brew
 ### Start the Build
 GNTL uses the CMake build system and a top-level [Makefile](Makefile) that invokes cmake commands as needed.
 
-**NOTE**: We will use the **v1.0.4** branch as an example, you should switch to the most recent released branch.
+**NOTE**: We will use the **v1.0.5** branch as an example, you should switch to the most recent released branch.
 
 #### Clone the Repository recursively to pull-in needed submodule(s)
 ```
@@ -228,7 +228,7 @@ git clone --recursive https://github.com/The-GNTL-Project/gntl
 
 ##### If you already have a repo cloned, initialize and update:
 ```
-cd gntl && git checkout v1.0.4
+cd gntl && git checkout v1.0.5
 git submodule init && git submodule update
 ```
 
@@ -239,7 +239,7 @@ git submodule init && git submodule update
 
 ```
 cd gntl
-git checkout v1.0.4
+git checkout v1.0.5
 USE_SINGLE_BUILDDIR=1 make release
 cd ~
 ```
@@ -357,11 +357,10 @@ Please make sure you get the armv7 version at present the armv8 wont work on 64b
 
 (We will renames file for easy typing later on)
 ```
-wget https://gntl.cash/downloads/GNTL-ARM-v7-v1.0.4.tar.gz
-tar -xf GNTL-ARM-v7-v1.0.4.tar.gz
-rm -r GNTL-ARM-v7-v1.0.4.tar.gz
-cd GNTL-ARM-v7-v1.0.4
-mv GNTL-ARM-v7-v1.0.4 gntl
+cd ~
+wget https://gntl.cash/downloads/GNTL-ARM-v7-Ubuntu-2004-v1.0.5.tar.gz
+tar -xf GNTL-ARM-v7-Ubuntu-2004-v1.0.5.tar.gz
+rm GNTL-ARM-v7-Ubuntu-2004-v1.0.5.tar.gz
 ```
 
 * To run the wallet you need to run it in the glibc container we just built.
