@@ -1,4 +1,4 @@
-// Copyright (c) 2021-2022, The GNTL Project
+// Copyright (c) 2021-2023, The GNTL Project
 // Copyright (c) 2017, The Monero Project
 //
 // All rights reserved.
