@@ -1,7 +1,12 @@
 name: Depends Ubuntu 20.04
 
-on: [push, pull_request]
-
+on:
+  push:
+    paths-ignore:
+      - '**/README.md'
+  pull_request:
+    paths-ignore:
+      - '**/README.md'
 env:
   APT_SET_CONF: |
     echo "Acquire::Retries \"3\";"         | sudo tee -a /etc/apt/apt.conf.d/80-custom
