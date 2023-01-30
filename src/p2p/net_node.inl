@@ -1,4 +1,4 @@
-// Copyright (c) 2021-2022, The GNTL Project
+// Copyright (c) 2021-2023, The GNTL Project
 // Copyright (c) 2014-2018, The Monero Project
 //
 // All rights reserved.
@@ -467,14 +467,18 @@ namespace nodetool
     }
     else if (nettype == cryptonote::STAGENET)
     {
-      full_addrs.insert("46.37.58.143:36661"); //UK
-    }
+      full_addrs.insert("82.69.122.59:36661"); //UK - BKdilse
+      full_addrs.insert("88.208.212.174:36661"); //UK - BKdilse
+      full_addrs.insert("13.66.214.75:36661"); //USA - BKdilse
+      full_addrs.insert("65.21.178.126:36661"); //Europe - baldtrooper
+      full_addrs.insert("65.21.245.45:36661"); //Europe - baldtrooper
+}
     else if (nettype == cryptonote::FAKECHAIN)
     {
     }
     else
     {
-      full_addrs.insert("46.37.58.143:16661"); //UK - BKdilse
+      full_addrs.insert("82.69.122.59:16661"); //UK - BKdilse
       full_addrs.insert("88.208.212.174:16661"); //UK - BKdilse
       full_addrs.insert("65.21.178.126:16661"); //Europe - baldtrooper
       full_addrs.insert("65.21.245.45:16661"); //Europe - baldtrooper
