@@ -8,9 +8,8 @@ Portions Copyright (c) 2012-2013 The Cryptonote developers.
 
 ## Table of Contents
 
-  - [Coin Specifications](#coin-specifications)
-  - [Development Resources](#development-resources)
-  - [Other GNTL related Websites](#other-gntl-related-websites)
+  - [Specifications](#specifications)
+  - [Resources](#resources)
   - [Introduction](#introduction)
   - [SSL](#ssl)
   - [About this project](#about-this-project)
@@ -31,7 +30,7 @@ Portions Copyright (c) 2012-2013 The Cryptonote developers.
     - [Analysing memory corruption](#analysing-memory-corruption)
     - [LMDB](#lmdb)
 
-## Coin Specifications
+## Specifications
 
 - Name: GNTL Coin
 - Ticker: GNTL
@@ -44,24 +43,21 @@ Portions Copyright (c) 2012-2013 The Cryptonote developers.
 - Consensus: PoW
 - Anonymity: BulletProof RingCT
 
-## Development Resources
+## Resources
 
 - Coin: [gntl.cash](https://gntl.cash)
 - Project: [gntl.uk](https://gntl.uk)
-- Mail (Project): [support@gntl.uk](mailto:support@gntl.uk)
-- Mail (Coin): [support@gntl.cash](mailto:support@gntl.cash)
-- GitHub: [https://github.com/The-GNTL-Project/gntl](https://github.com/The-GNTL-Project/gntl)
-- Discord: [https://discord.gg/4HyVA2A](https://discord.gg/4HyVA2A)
-- Telegram: [https://t.me/+9rrAXrpEWJ8xMmQ0](https://t.me/+9rrAXrpEWJ8xMmQ0)
+- Explorer (Primary): [explorer.gntl.cash](https://explorer.gntl.cash)
+- Explorer (Backup): [explorer.gntl.uk](https://explorer.gntl.uk)
+- Mining Pools: [https://miningpoolstats.stream/gntlcoin](https://miningpoolstats.stream/gntlcoin)
+- E-Mail (Coin): [support@gntl.cash](mailto:support@gntl.cash)
+- E-Mail (Project): [support@gntl.uk](mailto:support@gntl.uk)
+- Discord: [https://discord.gntl.uk](https://discord.gntl.uk)
+- Telegram: [https://t.me/GNTLCoin](https://t.me/GNTLCoin)
+- Wiki: [https://github.com/The-GNTL-Project/Documentation/wiki/](https://github.com/The-GNTL-Project/Documentation/wiki/)
+- Exchange (Exbitron): [https://trade.exbitron.com/](https://trade.exbitron.com/)
+- Exchange (XeggeX): [https://xeggex.com/](https://xeggex.com/)
 
-## Other GNTL related Websites
-
-- GNTL Coin Blockchain Explorer (Primary): [explorer.gntl.cash](https://explorer.gntl.cash)
-- GNTL Coin Blockchain Explorer (Backup): [explorer.gntl.uk](https://explorer.gntl.uk)
-- GNTL Coin Pools Stream: [https://miningpoolstats.stream/gntlcoin](https://miningpoolstats.stream/gntlcoin)
-- GNTL Mining Pools Landing: [https://pools.gntl.uk/](https://pools.gntl.uk/)
-- GNTL Mining Pools Stream: [https://miningpoolstats.stream/gntl.uk_pools](https://miningpoolstats.stream/gntl.uk_pools)
-- GNTL Mining Pools Crypunit: [https://www.cryptunit.com/poolsgroup/GNTL-pools](https://www.cryptunit.com/poolsgroup/GNTL-pools)
 
 ## Introduction
 
