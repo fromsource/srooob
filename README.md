@@ -1,7 +1,7 @@
 # GNTL Coin
 <img src="https://github.com/The-GNTL-Project/Images/raw/master/GNTL_Icon_Round_200x200.png" alt="GNTL Coin">
 
-Copyright (c) 2021-2023, The GNTL Project    
+Copyright (c) 2021-2024, The GNTL Project    
 Copyright (c) 2018-2020, The Arqma Network   
 Copyright (c) 2014-2020, The Monero Project  
 Portions Copyright (c) 2012-2013 The Cryptonote developers.

@@ -1,4 +1,4 @@
-// Copyright (c) 2021-2023, The GNTL Project
+// Copyright (c) 2021-2024, The GNTL Project
 // Word list created by Monero contributor sammy007
 //
 // Copyright (c) 2014-2018, The Monero Project

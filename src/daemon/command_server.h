@@ -9,7 +9,7 @@ Passing RPC commands:
 
 */
 
-// Copyright (c) 2021-2023, The GNTL Project
+// Copyright (c) 2021-2024, The GNTL Project
 // Copyright (c) 2014-2018, The Monero Project
 //
 // All rights reserved.
