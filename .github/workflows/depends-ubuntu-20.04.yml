@@ -24,38 +24,38 @@ jobs:
       fail-fast: false
       matrix:
         toolchain:
-          - name: "ARM-v7-Ubuntu-2004"
+          - name: "ARM-v7"
             host: "arm-linux-gnueabihf"
             packages: "python3 gperf g++-arm-linux-gnueabihf"
-          - name: "ARM-v8-Ubuntu-2004"
+          - name: "ARM-v8"
             host: "aarch64-linux-gnu"
             packages: "python3 gperf g++-aarch64-linux-gnu"
-          - name: "ARM-v8-Pi-Ubuntu-2004"
+          - name: "ARM-v8-Pi"
             host: "aarch64-linux-gnu"
             packages: "python3 gperf g++-aarch64-linux-gnu"
             cmake_opts: "-DNO_AES=ON"
-          - name: "Windows-x64-Ubuntu-2004"
+          - name: "Windows-x86_64"
             host: "x86_64-w64-mingw32"
             packages: "cmake python3 g++-mingw-w64-x86-64 qttools5-dev-tools"
-          - name: "Linux-x86_64-Ubuntu-2004"
+          - name: "Linux-x86_64"
             host: "x86_64-unknown-linux-gnu"
             packages: "gperf cmake python3-zmq libdbus-1-dev libharfbuzz-dev"
-          - name: "macOS-Ubuntu-2004"
+          - name: "macOS-x86_64"
             host: "x86_64-apple-darwin19.2.0"
             packages: "gperf cmake python3-zmq libdbus-1-dev libharfbuzz-dev"
     name: ${{ matrix.toolchain.name }}
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
       with:
         submodules: recursive
     - name: Ccache
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
         path: ~/.ccache
         key: ccache-${{ matrix.toolchain.host }}-${{ github.sha }}
         restore-keys: ccache-${{ matrix.toolchain.host }}-
     - name: Depends cache
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
         path: contrib/depends/built
         key: depends-${{ matrix.toolchain.host }}-${{ hashFiles('contrib/depends/packages/*') }}
@@ -86,7 +86,7 @@ jobs:
         cd build/${{ matrix.toolchain.host }}/release/
         mv bin gntl
         tar -czvf ${{ matrix.toolchain.name }}.tar.gz gntl
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.toolchain.name }}.tar.gz
         path: build/${{ matrix.toolchain.host }}/release/${{ matrix.toolchain.name }}.tar.gz

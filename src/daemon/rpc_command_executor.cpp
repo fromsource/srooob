@@ -1,4 +1,4 @@
-// Copyright (c) 2021-2023, The GNTL Project
+// Copyright (c) 2021-2024, The GNTL Project
 // Copyright (c) 2014-2018, The Monero Project
 //
 // All rights reserved.
@@ -478,7 +478,7 @@ bool t_rpc_command_executor::show_status()
     % get_mining_speed(ires.difficulty / ires.target)
     % (unsigned)hfres.version
     % get_fork_extra_info(hfres.earliest_height, net_height, ires.target)
-    % (hfres.state == cryptonote::HardFork::LikelyForked ? "out of date, likely forked" : "up to date")
+    % (hfres.state == cryptonote::HardFork::LikelyForked ? "no recent Hard Fork" : "up to date")
     % (unsigned)ires.outgoing_connections_count
     % (unsigned)ires.incoming_connections_count
   ;

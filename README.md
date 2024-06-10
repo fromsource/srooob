@@ -1,7 +1,7 @@
 # GNTL Coin
 <img src="https://github.com/The-GNTL-Project/Images/raw/master/GNTL_Icon_Round_200x200.png" alt="GNTL Coin">
 
-Copyright (c) 2021-2023, The GNTL Project    
+Copyright (c) 2021-2024, The GNTL Project    
 Copyright (c) 2018-2020, The Arqma Network   
 Copyright (c) 2014-2020, The Monero Project  
 Portions Copyright (c) 2012-2013 The Cryptonote developers.
@@ -215,7 +215,7 @@ brew update && brew bundle --file=contrib/apple/brew
 ### Start the Build
 GNTL uses the CMake build system and a top-level [Makefile](Makefile) that invokes cmake commands as needed.
 
-**NOTE**: We will use the **v1.0.5** branch as an example, you should switch to the most recent released branch.
+**NOTE**: We will use the **v1.0.6** branch as an example, you should switch to the most recent released branch.
 
 #### Clone the Repository recursively to pull-in needed submodule(s)
 ```
@@ -224,7 +224,7 @@ git clone --recursive https://github.com/The-GNTL-Project/gntl
 
 ##### If you already have a repo cloned, initialize and update:
 ```
-cd gntl && git checkout v1.0.5
+cd gntl && git checkout v1.0.6
 git submodule init && git submodule update
 ```
 
@@ -235,7 +235,7 @@ git submodule init && git submodule update
 
 ```
 cd gntl
-git checkout v1.0.5
+git checkout v1.0.6
 USE_SINGLE_BUILDDIR=1 make release
 cd ~
 ```
@@ -354,9 +354,9 @@ Please make sure you get the armv7 version at present the armv8 wont work on 64b
 (We will renames file for easy typing later on)
 ```
 cd ~
-wget https://gntl.cash/downloads/GNTL-ARM-v7-Ubuntu-2004-v1.0.5.tar.gz
-tar -xf GNTL-ARM-v7-Ubuntu-2004-v1.0.5.tar.gz
-rm GNTL-ARM-v7-Ubuntu-2004-v1.0.5.tar.gz
+wget https://gntl.cash/downloads/GNTL-ARM-v7-v1.0.6.tar.gz
+tar -xf GNTL-ARM-v7-v1.0.6.tar.gz
+rm GNTL-ARM-v7-v1.0.6.tar.gz
 ```
 
 * To run the wallet you need to run it in the glibc container we just built.

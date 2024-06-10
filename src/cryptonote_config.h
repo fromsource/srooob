@@ -1,4 +1,4 @@
-// Copyright (c) 2021-2023, The GNTL Project
+// Copyright (c) 2021-2024, The GNTL Project
 // Copyright (c) 2014-2018, The Monero Project
 //
 // All rights reserved.
@@ -252,7 +252,7 @@ namespace config
 
    namespace sync
    {
-     const uint64_t HIGHEST_CHECKPOINT = 450000;
+     const uint64_t HIGHEST_CHECKPOINT = 840000;
      const size_t NORMAL_SYNC = 20;
      const size_t FAST_SYNC = 100;
    }

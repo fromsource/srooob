@@ -1,4 +1,4 @@
-// Copyright (c) 2021-2023, The GNTL Project
+// Copyright (c) 2021-2024, The GNTL Project
 // Copyright (c) 2014-2018, The Monero Project
 //
 // All rights reserved.
@@ -5117,7 +5117,7 @@ void Blockchain::cancel()
 }
 
 #if defined(PER_BLOCK_CHECKPOINT)
-static const char expected_block_hashes_hash[] = "9710f6a37b6a043a62ea6327e16778ac8a9edb242136b6c9da1716c832a4d7da";
+static const char expected_block_hashes_hash[] = "f1075b777645adf48955dbfd961f6db1a3dc8dfc0f2e255839a1e3423a6b23f6";
 void Blockchain::load_compiled_in_block_hashes(const GetCheckpointsCallback& get_checkpoints)
 {
   if (get_checkpoints == nullptr || !m_fast_sync)
