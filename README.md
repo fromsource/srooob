@@ -57,7 +57,8 @@ Portions Copyright (c) 2012-2013 The Cryptonote developers.
 - Wiki: [https://github.com/The-GNTL-Project/Documentation/wiki/](https://github.com/The-GNTL-Project/Documentation/wiki/)
 - Exchange (Exbitron): [https://trade.exbitron.com/](https://trade.exbitron.com/)
 - Exchange (XeggeX): [https://xeggex.com/](https://xeggex.com/)
-
+- Nodes Information Monitor: [https://nodes.gntl.uk/](https://nodes.gntl.uk/)
+- Nodes Uptime Monitor: [https://stats.uptimerobot.com/wNWOvs003Y](https://stats.uptimerobot.com/wNWOvs003Y)
 
 ## Introduction
 
