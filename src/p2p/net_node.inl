@@ -486,7 +486,7 @@ namespace nodetool
       full_addrs.insert("13.66.214.75:16661"); //USA - BKdilse
       full_addrs.insert("47.181.202.47:16661"); //USA - Grok
       full_addrs.insert("68.168.100.207:16661"); //USA - Eadrom
-      full_addrs.insert("125.229.80.116:16661"); //Asia - AzPool
+      full_addrs.insert("1.34.251.123:16661"); //Asia - AzPool
     }
     return full_addrs;
   }
