@@ -1,6 +1,7 @@
-# GNTL Coin
+# SROOOB Coin
 <img src="https://github.com/The-GNTL-Project/Images/raw/master/GNTL_Icon_Round_200x200.png" alt="GNTL Coin">
 
+Copyright (c) 2025-2026, SROOOB Project    
 Copyright (c) 2021-2024, The GNTL Project    
 Copyright (c) 2018-2020, The Arqma Network   
 Copyright (c) 2014-2020, The Monero Project  
@@ -32,8 +33,8 @@ Portions Copyright (c) 2012-2013 The Cryptonote developers.
 
 ## Specifications
 
-- Name: GNTL Coin
-- Ticker: GNTL
+- Name: SROOOB Coin
+- Ticker: SRB
 - Max supply: 77.7 ml
 - Pre-mine: 0.000000030 (all burnt)
 - Governance Fee: 10% for 4 months (height < 87,000), 5% for a further 8 months (height < 260,000), and then 1% thereafter (height > 260,000)
@@ -45,38 +46,38 @@ Portions Copyright (c) 2012-2013 The Cryptonote developers.
 
 ## Resources
 
-- Coin: [gntl.cash](https://gntl.cash)
-- Project: [gntl.uk](https://gntl.uk)
-- Explorer (Primary): [explorer.gntl.cash](https://explorer.gntl.cash)
-- Explorer (Backup): [explorer.gntl.uk](https://explorer.gntl.uk)
-- Mining Pools: [https://miningpoolstats.stream/gntlcoin](https://miningpoolstats.stream/gntlcoin)
-- E-Mail (Coin): [support@gntl.cash](mailto:support@gntl.cash)
-- E-Mail (Project): [support@gntl.uk](mailto:support@gntl.uk)
-- Discord: [https://discord.gntl.uk](https://discord.gntl.uk)
-- Telegram: [https://t.me/GNTLCoin](https://t.me/GNTLCoin)
-- Wiki: [https://github.com/The-GNTL-Project/Documentation/wiki/](https://github.com/The-GNTL-Project/Documentation/wiki/)
-- Exchange (Exbitron): [https://trade.exbitron.com/](https://trade.exbitron.com/)
-- Exchange (XeggeX): [https://xeggex.com/](https://xeggex.com/)
-- Nodes Information Monitor: [https://nodes.gntl.uk/](https://nodes.gntl.uk/)
+- Coin: [srooob.com](https://www.srooob.com)
+- Project: [srooob.net](https://www.srooob.net)
+- Explorer (Primary): [explorer.srooob.com](https://explorer.srooob.com)
+- Explorer (Backup): [explorer.srooob.net](https://explorer.srooob.net)
+- Mining Pools: [https://miningpoolstats.stream/srooob](https://miningpoolstats.stream/srooob)
+- E-Mail (Coin): [support@srooob.com](mailto:support@srooob.com)
+- E-Mail (Project): [support@srooob.net](mailto:support@srooob.net)
+- Discord: [https://discord.srooob.com](https://discord.srooob.com)
+- Telegram: [https://t.me/SROOOB](https://t.me/SROOOB)
+- Wiki: [https://github.com/fromsource/Documentation/wiki/](https://github.com/fromsource/Documentation/wiki/)
+- Exchange (Exbitron):
+- Exchange (XeggeX):
+- Nodes Information Monitor: [https://nodes.srooob.com/](https://nodes.srooob.com/)
 - Nodes Uptime Monitor: [https://stats.uptimerobot.com/wNWOvs003Y](https://stats.uptimerobot.com/wNWOvs003Y)
 
 ## Introduction
 
-GNTL is a private, secure, untraceable, decentralised digital currency. You are your bank, you control your funds, and nobody can trace your transfers unless you allow them to do so.
+SROOOB is a private, secure, untraceable, decentralised digital currency. You are your bank, you control your funds, and nobody can trace your transfers unless you allow them to do so.
 
-**Privacy:** GNTL uses a cryptographically sound system to allow you to send and receive funds without your transactions being easily revealed on the blockchain (the ledger of transactions that everyone has). This ensures that your purchases, receipts, and all transfers remain absolutely private by default.
+**Privacy:** SROOOB uses a cryptographically sound system to allow you to send and receive funds without your transactions being easily revealed on the blockchain (the ledger of transactions that everyone has). This ensures that your purchases, receipts, and all transfers remain absolutely private by default.
 
 **Security:** Using the power of a distributed peer-to-peer consensus network, every transaction on the network is cryptographically secured. Individual wallets have a 25 word mnemonic seed that is only displayed once, and can be written down to backup the wallet. Wallet files are encrypted with a passphrase to ensure they are useless if stolen.
 
-**Untraceability:** By taking advantage of ring signatures, a special property of a certain type of cryptography, GNTL is able to ensure that transactions are not only untraceable, but have an optional measure of ambiguity that ensures that transactions cannot easily be tied back to an individual user or computer.
+**Untraceability:** By taking advantage of ring signatures, a special property of a certain type of cryptography, SROOOB is able to ensure that transactions are not only untraceable, but have an optional measure of ambiguity that ensures that transactions cannot easily be tied back to an individual user or computer.
 
 ## SSL
 
-As a network, GNTL supports complete, cryptographically secured connections at all levels. This includes, but is not limited to The GNTL Project Nodes (Full nodes), Remote Nodes and all wallets.    
+As a network, SROOOB supports complete, cryptographically secured connections at all levels. This includes, but is not limited to SROOOB Project Nodes (Full nodes), Remote Nodes and all wallets.    
 
-The GNTL Project will be consistently implementing the highest security protocols to achieve the greatest privacy for all transactions, as well as all communications made over The GNTL Project.
+SROOOB Project will be consistently implementing the highest security protocols to achieve the greatest privacy for all transactions, as well as all communications made over SROOOB Project.
 
-The use of SSL connections means that there will not be any possibility to use The GNTL Project with unsecured or tampered connections (daemons), and that your privacy will remain a feature built in a protocol level.
+The use of SSL connections means that there will not be any possibility to use SROOOB Project with unsecured or tampered connections (daemons), and that your privacy will remain a feature built in a protocol level.
 
  * Below is an example how to generate SSL Keys with openssl.  This example will generate 4096bit SSL Cert at /tmp (which can be changed)
 
@@ -88,19 +89,19 @@ openssl x509 -req -days 999999 -sha256 -in /tmp/REQ -signkey /tmp/KEY -out /tmp/
 
 ## About this project
 
-This is the core implementation of GNTL. It is open source and completely free to use without restrictions, except for those specified in the license agreement below. There are no restrictions on anyone creating an alternative implementation of GNTL that uses the protocol and network in a compatible manner.
+This is the core implementation of SROOOB. It is open source and completely free to use without restrictions, except for those specified in the license agreement below. There are no restrictions on anyone creating an alternative implementation of GNTL that uses the protocol and network in a compatible manner.
 
 As with many development projects, the repository on Github is considered to be the "staging" area for the latest changes. Before changes are merged into that branch on the main repository, they are tested by individual developers in their own branches, submitted as a pull request, and then subsequently tested by contributors who focus on testing and code reviews. That having been said, the repository should be carefully considered before using it in a production environment, unless there is a patch in the repository for a particular show-stopping issue you are experiencing. It is generally a better idea to use a tagged release for stability.
 
-**Anyone is welcome to contribute to GNTL's codebase!** If you have a fix or code change, feel free to submit it as a pull request directly to the "master" branch. In cases where the change is relatively small or does not affect other parts of the codebase it may be merged in immediately by any one of the collaborators. On the other hand, if the change is particularly large or complex, it is expected that it will be discussed at length either well in advance of the pull request being submitted, or even directly on the pull request.
+**Anyone is welcome to contribute to SROOOB's codebase!** If you have a fix or code change, feel free to submit it as a pull request directly to the "master" branch. In cases where the change is relatively small or does not affect other parts of the codebase it may be merged in immediately by any one of the collaborators. On the other hand, if the change is particularly large or complex, it is expected that it will be discussed at length either well in advance of the pull request being submitted, or even directly on the pull request.
 
 ## Supporting the project
 
-GNTL is a 100% community developed.  If you would like to donate to our cause, please do so via the following donation addresses:
+SROOOB is a 100% community developed.  If you would like to donate to our cause, please do so via the following donation addresses:
 
-GNTL Wallet: `gnt1ibrAtYtThQWQ8QdeLPWGD9ZeqnDsJ9A4d86DMC2RD7frBSE1uZmFezsbW7TXHdNHYWDWsccRo8TpE55p2HWR74ofajRWc5`
+SROOOB Wallet: ``
 
-GNTL Viewkey: `d0abbf9c47bdf8189676eed67bfb31a2ef16ef276a8077877a987bff9fcb8203`
+SROOOB Viewkey: ``
 
 ## License
 
@@ -110,7 +111,7 @@ See [LICENSE](LICENSE).
 
 If you want to help out, see [CONTRIBUTING](CONTRIBUTING.md) for a set of guidelines.
 
-## Compiling GNTL from source
+## Compiling SROOOB from source
 **Our build has been tested on Debian 11 and Ubuntu Server 20.04.  Other versions of OS should work, but are out of scope in this guide**
 
 ### Build Process
@@ -118,7 +119,7 @@ If you want to help out, see [CONTRIBUTING](CONTRIBUTING.md) for a set of guidel
 
 The master branch is used for active development and can be either unstable or incompatible with release software. Please compile release branches instead.
 
-[![TravisCI master branch](https://img.shields.io/travis/gntl/gntl/master?label=master%20branch&style=for-the-badge)](https://travis-ci.org/gntl/gntl)
+[![TravisCI master branch](https://img.shields.io/travis/srooob/srooob/master?label=master%20branch&style=for-the-badge)](https://travis-ci.org/srooob/srooob)
 ![Monitored by DiscordHooks](https://img.shields.io/static/v1?label=Monitored%20by&message=DiscordHooks&color=brightgreen&style=for-the-badge)
 
 **Tools and Libraries Used**
@@ -220,12 +221,12 @@ GNTL uses the CMake build system and a top-level [Makefile](Makefile) that invok
 
 #### Clone the Repository recursively to pull-in needed submodule(s)
 ```
-git clone --recursive https://github.com/The-GNTL-Project/gntl
+git clone --recursive https://github.com/fromsource/srooob
 ```
 
 ##### If you already have a repo cloned, initialize and update:
 ```
-cd gntl && git checkout v1.0.6
+cd srooob && git checkout v1.0.6
 git submodule init && git submodule update
 ```
 
@@ -235,7 +236,7 @@ git submodule init && git submodule update
 **NOTE**: If your machine has several cores and enough memory, enable parallel build by running `make -j<number of threads>` instead of `make` below.  For this to be worthwhile, the machine should have one core and about 2GB of RAM available per thread.
 
 ```
-cd gntl
+cd srooob
 git checkout v1.0.6
 USE_SINGLE_BUILDDIR=1 make release
 cd ~
@@ -244,13 +245,13 @@ cd ~
 ##### Running the Built Executables
 The resulting executables can be found in: `build/release/bin`
 
-Add `PATH="$PATH:$HOME/gntl/build/release/bin"` to `.profile`
+Add `PATH="$PATH:$HOME/srooob/build/release/bin"` to `.profile`
 
 Run `. ~/.profile` to reload profile changes.
 
-Run GNTL Daemon using `gntld --detach`
+Run SROOOB Daemon using `srooobd --detach`
 
-Other executables, such as `gntl-wallet-cli` are also available in `build/release/bin`
+Other executables, such as `srooob-wallet-cli` are also available in `build/release/bin`
 
 #### Raspberry Pi Zero
 Tested on a Raspberry Pi Zero with a clean install of minimal Raspbian Stretch (2017-09-07 or later) from https://www.raspberrypi.org/downloads/raspbian/. If you are using Raspian Jessie, [please see note in the following section](#note-for-raspbian-jessie-users).
@@ -270,8 +271,8 @@ sudo /etc/init.d/dphys-swapfile start
 
 * Clone gntl and checkout most recent release version:
 ```
-git clone https://github.com/The-GNTL-Project/gntl.git
-cd gntl
+git clone https://github.com/fromsource/srooob.git
+cd srooob
 ```
 
 * Build:
@@ -286,13 +287,13 @@ make release
 
 * Add `PATH="$PATH:$HOME/gntl/build/release/bin"` to `.profile`
 
-* Run GNTL with `gntld --detach`
+* Run SROOOB with `gntld --detach`
 
 * You may wish to reduce the size of the swap file after the build has finished, and delete the boost directory from your home directory
 
 #### Raspbian Jessie
 
-If you are using the older Raspbian Jessie image, compiling GNTL is a bit more complicated. The version of Boost available in the Debian Jessie repositories is too old to use with GNTL, and thus you must compile a newer version yourself. The following explains the extra steps, and has been tested on a Raspberry Pi 2 with a clean install of minimal Raspbian Jessie.
+If you are using the older Raspbian Jessie image, compiling SROOOB is a bit more complicated. The version of Boost available in the Debian Jessie repositories is too old to use with SROOOB, and thus you must compile a newer version yourself. The following explains the extra steps, and has been tested on a Raspberry Pi 2 with a clean install of minimal Raspbian Jessie.
 
 * As before, `apt-get update && apt-get upgrade` to install all of the latest software, and increase the system swap size
 
@@ -303,7 +304,7 @@ CONF_SWAPSIZE=1024
 sudo /etc/init.d/dphys-swapfile start
 ```
 
-* Then, install the dependencies for GNTL except `libunwind` and `libboost-all-dev`
+* Then, install the dependencies for SROOOB except `libunwind` and `libboost-all-dev`
 
 * Install the latest version of boost (this may first require invoking `apt-get remove --purge libboost*` to remove a previous version if you're not using a clean install):
 
@@ -323,7 +324,7 @@ sudo ./bjam install
 
 * Wait a while, depending on you system specifications.
 
-* From here, follow the [general Raspberry Pi instructions](#on-the-raspberry-pi) from the "Clone gntl and checkout most recent release version" step.
+* From here, follow the [general Raspberry Pi instructions](#on-the-raspberry-pi) from the "Clone srooob and checkout most recent release version" step.
 
 #### Raspberry Pi 2b and Pi 400
 
@@ -355,16 +356,16 @@ Please make sure you get the armv7 version at present the armv8 wont work on 64b
 (We will renames file for easy typing later on)
 ```
 cd ~
-wget https://gntl.cash/downloads/GNTL-ARM-v7-v1.0.6.tar.gz
-tar -xf GNTL-ARM-v7-v1.0.6.tar.gz
-rm GNTL-ARM-v7-v1.0.6.tar.gz
+wget https://srooob.com/downloads/SROOOB-ARM-v7-v1.0.6.tar.gz
+tar -xf SROOOB-ARM-v7-v1.0.6.tar.gz
+rm SROOOB-ARM-v7-v1.0.6.tar.gz
 ```
 
 * To run the wallet you need to run it in the glibc container we just built.
 (please make sure data-dir is not on a small sd card)
 ```
 cd glibc-2.33/build
-sudo ./testrun.sh ~/gntl/gntld --data-dir /gntl
+sudo ./testrun.sh ~/srooob/srooobd --data-dir /srooob
 ```
 
 * First time update blockchain will take a while depending on what storage your using. Please wait till this complete syncs up before you carry on to wallet.
@@ -372,7 +373,7 @@ sudo ./testrun.sh ~/gntl/gntld --data-dir /gntl
 * Open another command prompt while leaving the above
 
 ```
-sudo ./testrun.sh ~/gntl/gntl-wallet-cli
+sudo ./testrun.sh ~/srooob/srooob-wallet-cli
 ```
 
 #### Windows 10:
@@ -411,16 +412,16 @@ pacman -S git mingw-w64-x86_64-toolchain make mingw-w64-x86_64-cmake mingw-w64-x
 
 **Building**
 
-* Download GNTL with command:
+* Download SROOOB with command:
 
 ```
-git clone https://github.com/The-GNTL-Project/gntl
+git clone https://github.com/fromsource/srooob
 ```
 
 * Change branch to last Release:
 
 ```
-cd gntl && git checkout <branch or release>
+cd srooob && git checkout <branch or release>
 ```
 
 * Activate and update submodules:
@@ -445,17 +446,17 @@ make debug-static-win
 
 * The resulting executables can be found in `build/debug/bin`
 
-*** GNTL does Not support 32-bit Windows anymore ***
+*** SROOOB does Not support 32-bit Windows anymore ***
 
 #### Linux for Android (using docker):
 
 ##### Build image
 ```
-docker build -f utils/build_scripts/android32.Dockerfile -t gntl-android .
+docker build -f utils/build_scripts/android32.Dockerfile -t srooob-android .
 ```
 ##### Create container
 ```
-docker create -it --name gntl-android gntl-android bash
+docker create -it --name srooob-android srooob-android bash
 ```
 ##### Get binaries
 ```
